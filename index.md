@@ -1,3 +1,3 @@
 # MisterWho'Blog
 
-{{ site }}
+{{ site.articles }}
