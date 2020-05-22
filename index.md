@@ -1,5 +1,5 @@
 ---
-title: MisterWho'Blog
+title: Mr.Who'Blog
 ---
 # 读书笔记
 
