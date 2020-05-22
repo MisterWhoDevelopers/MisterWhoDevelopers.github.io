@@ -1,3 +1,6 @@
+---
+title: MisterWho'Blog
+---
 # 读书笔记
 
 {% for post in site.posts %}
