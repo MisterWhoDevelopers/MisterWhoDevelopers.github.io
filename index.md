@@ -1,5 +1,5 @@
 # MisterWho'Blog
 
-{{ site.articles }}
+{{ site.articles.study_notes }}
 
 {{ site.posts }}
