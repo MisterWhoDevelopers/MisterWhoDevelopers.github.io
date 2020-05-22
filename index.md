@@ -1,3 +1,3 @@
 # MisterWho'Blog
 
-{{ site.articles.study_notes }}
+{{ site.study_notes }}
