@@ -1,7 +1,7 @@
 ---
 title: Mr.Who'Blog
 ---
-# 读书笔记
+# 文章
 
 {% for post in site.posts %}
 
