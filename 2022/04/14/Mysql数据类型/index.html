@@ -18,27 +18,27 @@
   
   
   <title>Mysql数据类型 | Hexo</title>
-  <meta name="description" content="数值类型数据 SERIAL is an alias for BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE. SERIAL是BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE的别名。 这句话什么意思呢？先让我们执行下图中的 SQL 语句  结果  SERIAL DEFAULT VALUE in the def">
+  <meta name="description" content="数值类型数据SERIAL is an alias for BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE. SERIAL是BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE的别名。 这句话什么意思呢？先让我们执行下图中的 SQL 语句  结果  SERIAL DEFAULT VALUE in the defin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql数据类型">
 <meta property="og:url" content="https://misterwhodevelopers.github.io/2022/04/14/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="誰先生">
-<meta property="og:description" content="数值类型数据 SERIAL is an alias for BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE. SERIAL是BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE的别名。 这句话什么意思呢？先让我们执行下图中的 SQL 语句  结果  SERIAL DEFAULT VALUE in the def">
+<meta property="og:description" content="数值类型数据SERIAL is an alias for BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE. SERIAL是BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE的别名。 这句话什么意思呢？先让我们执行下图中的 SQL 语句  结果  SERIAL DEFAULT VALUE in the defin">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png">
 <meta property="article:published_time" content="2022-04-14T06:05:20.000Z">
-<meta property="article:modified_time" content="2024-05-17T01:52:25.382Z">
+<meta property="article:modified_time" content="2024-07-19T06:56:59.299Z">
 <meta property="article:author" content="誰先生">
 <meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
+<meta name="twitter:image" content="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://misterwhodevelopers.github.io/2022/04/14/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
   
@@ -394,24 +394,23 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="数值类型数据"><a class="markdownIt-Anchor" href="#数值类型数据"></a> 数值类型数据</h2>
-<p><code>SERIAL</code> is an alias for <code>BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE</code>.</p>
+        <h2 id="数值类型数据"><a href="#数值类型数据" class="headerlink" title="数值类型数据"></a>数值类型数据</h2><p><code>SERIAL</code> is an alias for <code>BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE</code>.</p>
 <p><code>SERIAL</code>是<code>BIGINT UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE</code>的别名。</p>
 <p>这句话什么意思呢？先让我们执行下图中的 SQL 语句</p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png" alt="1" /></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/1.png" alt="1"></p>
 <p>结果</p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png" alt="2" /></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/2.png" alt="2"></p>
 <p><code>SERIAL DEFAULT VALUE</code> in the definition of an integer column is an alias for <code>NOT NULL AUTO_INCREMENT UNIQUE</code>.</p>
 <p><code>SERIAL DEFAULT VALUE</code>在定义整数<code>column</code>是<code>NOT NULL AUTO_INCREMENT UNIQUE</code>的别名。</p>
 <p>这句话什么意思呢？我们执行下图中的 SQL 语句</p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png" alt="3" /></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/3.png" alt="3"></p>
 <p>结果</p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png" alt="4" /></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/4.png" alt="4"></p>
 <p>以此推类，定义整数类型的<code>column</code>时，<code>SERIAL DEFAULT VALUE</code>可以简写<code>NOT NULL AUTO_INCREMENT UNIQUE</code></p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png" alt="5" /></p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png" alt="6" /></p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png" alt="7" /></p>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png" alt="8" /></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/5.png" alt="5"></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/6.png" alt="6"></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/7.png" alt="7"></p>
+<p><img src="https://misterwhodevelopers.github.io/images/Mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/8.png" alt="8"></p>
 <p><em><code>[]</code></em> 表示 <em><code>[可选]</code></em></p>
 <table>
 <thead>
@@ -421,11 +420,10 @@
 <th>中文描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>BIT</code><em><code>[(M)]</code></em></td>
 <td>A bit-value type. <em><code>M</code></em> indicates the number of bits per value, from <code>1</code> to <code>64</code>. The default is 1 if <em><code>M</code></em> is omitted.</td>
-<td>比特值类型。<em><code>M</code></em> 表示数字 <code>1</code> ~ <code>64</code>。省略 <em><code>M</code></em> 则默认值为 <code>1</code>。</td>
+<td>比特值类型。_<code>M</code>_ 表示数字 <code>1</code> ~ <code>64</code>。省略 <em><code>M</code></em> 则默认值为 <code>1</code>。</td>
 </tr>
 <tr>
 <td><code>TINYINT</code><em><code>[(M)]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
@@ -465,7 +463,7 @@
 <tr>
 <td><code>DECIMAL</code><em><code>[(M[, D])]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
 <td>A packed “exact” fixed-point number. <em><code>M</code></em> is the total number of digits (the precision) and <em><code>D</code></em> is the number of digits after the decimal point (the scale). The decimal point and (for negative numbers) the <code>-</code> sign are not counted in <em><code>M</code></em>. If <em><code>D</code></em> is <code>0</code>, values have no decimal point or fractional part. The maximum number of digits ( <em><code>M</code></em> ) for <code>DECIMAL</code> is <code>65</code>. The maximum number of supported decimals ( <em><code>D</code></em> ) is <code>30</code>. If <em><code>D</code></em> is omitted, the default is <code>0</code>. If <em><code>M</code></em> is omitted, the default is <code>10</code>. <code>UNSIGNED</code> , if specified, disallows negative values. All basic calculations ( <code>+, -, *, /</code> ) with <code>DECIMAL</code> columns are done with a precision of <code>65</code> digits.</td>
-<td>已封装好的“精确”定点数。<em><code>M</code></em> 是总位数（精度），<em><code>D</code></em> 是小数点后面的位数（小数位数）。 <code>.</code> 和 <code>-</code> 符号不计入 <em><code>M</code></em>。如果 <em><code>D</code></em> 为<code>0</code>，值就没有小数点或小数部分。<code>DECIMAL</code> 的最大位数 ( <em><code>M</code></em> ) 为 <code>65</code>。<em><code>D</code></em> 最大支持小数是 <code>30</code>。如果 省略 <em><code>D</code></em> ，默认为 <code>0</code>。省略 <em><code>M</code></em> 则默认为<code>10</code>。如果指定 <code>UNSIGNED</code>，就不允许负数。<code>DECIMAL</code> 的所有基本计算（<code>加、减、乘、除</code>）都以 <code>65</code> 位精度完成。</td>
+<td>已封装好的“精确”定点数。_<code>M</code>_ 是总位数（精度），_<code>D</code>_ 是小数点后面的位数（小数位数）。 <code>.</code> 和 <code>-</code> 符号不计入 <em><code>M</code><em>。如果 <em><code>D</code></em> 为<code>0</code>，值就没有小数点或小数部分。<code>DECIMAL</code> 的最大位数 ( <em><code>M</code></em> ) 为 <code>65</code>。</em><code>D</code></em> 最大支持小数是 <code>30</code>。如果 省略 <em><code>D</code></em> ，默认为 <code>0</code>。省略 <em><code>M</code></em> 则默认为<code>10</code>。如果指定 <code>UNSIGNED</code>，就不允许负数。<code>DECIMAL</code> 的所有基本计算（<code>加、减、乘、除</code>）都以 <code>65</code> 位精度完成。</td>
 </tr>
 <tr>
 <td><code>DEC</code><em><code>[(M[, D])]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em>, <code>NUMERIC[(M[, D])]</code> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em>, <code>FIXED</code><em><code>[(M[, D])]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
@@ -475,7 +473,7 @@
 <tr>
 <td><code>FLOAT</code><em><code>[(M,D)]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
 <td>A small (single-precision) floating-point number. Permissible values are <code>-3.402823466E+38</code> to <code>-1.175494351E-38</code>,<code>0</code>, and <code>1.175494351E-38</code> to <code>3.402823466E+38</code>. These are the theoretical limits, based on the IEEE standard. The actual range might be slightly smaller depending on your hardware or operating system.<em><code>M</code></em> is the total number of digits and <em><code>D</code></em> is the number of digits following the decimal point. If <em><code>M</code></em> and <em><code>D</code></em> are omitted, values are stored to the limits permitted by the hardware. A single-precision floating-point number is accurate to approximately <code>7</code> decimal places. <code>FLOAT</code><em><code>[(M,D)]</code></em> is a nonstandard MySQL extension. <code>UNSIGNED</code>, if specified, disallows negative values.Using <code>FLOAT</code> might give you some unexpected problems because all calculations in MySQL are done with double precision.</td>
-<td>很小（单精度）的浮点数。允许的值是 <code>-3.402823466E+38</code> ~ <code>-1.175494351E-38</code>，<code>0</code> ，<code>1.175494351E-38</code> ~ <code>3.402823466E+38</code>。这些是理论的限制，基于 IEEE 标准。实际范围比这个可能更小一些，取决于您的硬件或操作系统。<em><code>M</code></em> 是总位数，<em><code>D</code></em> 是小数点后面的位数。如省略 <em><code>M</code></em> 和 <em><code>D</code></em> ，值将存在硬件允许的范围内。单精度浮点数精确到大约 <code>7</code> 位小数。<code>FLOAT</code> 是一个非标准的 MySQL 扩展。如指定<code>UNSIGNED</code>，不允许负值。使用 <code>FLOAT</code> 可能会给您带来意料之外的问题，因为在 Mysql 中所有计算都通过双精度完成。</td>
+<td>很小（单精度）的浮点数。允许的值是 <code>-3.402823466E+38</code> ~ <code>-1.175494351E-38</code>，<code>0</code> ，<code>1.175494351E-38</code> ~ <code>3.402823466E+38</code>。这些是理论的限制，基于 IEEE 标准。实际范围比这个可能更小一些，取决于您的硬件或操作系统。_<code>M</code>_ 是总位数，_<code>D</code>_ 是小数点后面的位数。如省略 <em><code>M</code></em> 和 <em><code>D</code></em> ，值将存在硬件允许的范围内。单精度浮点数精确到大约 <code>7</code> 位小数。<code>FLOAT</code> 是一个非标准的 MySQL 扩展。如指定<code>UNSIGNED</code>，不允许负值。使用 <code>FLOAT</code> 可能会给您带来意料之外的问题，因为在 Mysql 中所有计算都通过双精度完成。</td>
 </tr>
 <tr>
 <td><code>FLOAT</code><em><code>(p)</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
@@ -485,17 +483,15 @@
 <tr>
 <td><code>DOUBLE</code><em><code>[(M,D)]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
 <td>A normal-size (double-precision) floating-point number. Permissible values are <code>-1.7976931348623157E+308</code> to<code>-2.2250738585072014E-308</code>, <code>0</code>, and <code>2.2250738585072014E-308</code> to <code>1.7976931348623157E+308</code>. These are the theoretical limits, based on the IEEE standard. The actual range might be slightly smaller depending on your hardware or operating system. <em><code>M</code></em> is the total number of digits and <em><code>D</code></em> is the number of digits following the decimal point. If <em><code>M</code></em> and <em><code>D</code></em> are omitted, values are stored to the limits permitted by the hardware. A double-precision floating-point number is accurate to approximately <code>15</code> decimal places. <code>DOUBLE</code> is a nonstandard MySQL extension. <code>UNSIGNED</code>, if specified, disallows negative values.</td>
-<td>正常大小（双精度）浮点数。允许值是 <code>-1.7976931348623157E+308</code> ~<code>-2.2250738585072014E-308</code> ，<code>0</code>，和 <code>2.2250738585072014E-308</code> to <code>1.7976931348623157E+308</code>。这些是理论的限制，基于 IEEE 标准。实际范围比这个可能更小一些，取决于您的硬件或操作系统。<em><code>M</code></em> 是总位数，<em><code>D</code></em> 是小数点后面的位数。如省略 <em><code>M</code></em> 和 <em><code>D</code></em> ，值将存在硬件允许的范围内。双精度浮点数精确到大约 <code>15</code> 位小数。<code>DOUBLE</code> 是一个非标准的 MySQL 扩展。如指定<code>UNSIGNED</code>，不允许负值。</td>
+<td>正常大小（双精度）浮点数。允许值是 <code>-1.7976931348623157E+308</code> ~&#96;-2.2250738585072014E-308<code> ，</code>0<code>，和 </code>2.2250738585072014E-308<code>to</code>1.7976931348623157E+308<code>。这些是理论的限制，基于 IEEE 标准。实际范围比这个可能更小一些，取决于您的硬件或操作系统。_</code>M<code>_ 是总位数，_</code>D<code>_ 是小数点后面的位数。如省略 _</code>M<code>_ 和 _</code>D<code>_ ，值将存在硬件允许的范围内。双精度浮点数精确到大约 </code>15<code> 位小数。</code>DOUBLE<code> 是一个非标准的 MySQL 扩展。如指定</code>UNSIGNED&#96;，不允许负值。</td>
 </tr>
 <tr>
 <td><code>DOUBLE PRECISION</code><em><code>[(M,D)]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em>, <code>REAL</code><em><code>[(M,D)]</code></em> <em><code>[UNSIGNED]</code></em> <em><code>[ZEROFILL]</code></em></td>
 <td>These types are synonyms for <code>DOUBLE</code>. Exception: If the <code>REAL_AS_FLOAT</code> SQL mode is enabled, <code>REAL</code> is a synonym for <code>FLOAT</code> rather than <code>DOUBLE</code>.</td>
 <td>类型和 <code>DOUBLE</code>相同。例外：如果启用了 <code>REAL_AS_FLOAT</code> SQL 模式，<code>REAL</code> 是 <code>FLOAT</code> 而不是 <code>DOUBLE</code> 。</td>
 </tr>
-</tbody>
-</table>
-<h2 id="日期和时间类型数据"><a class="markdownIt-Anchor" href="#日期和时间类型数据"></a> 日期和时间类型数据</h2>
-<table>
+</tbody></table>
+<h2 id="日期和时间类型数据"><a href="#日期和时间类型数据" class="headerlink" title="日期和时间类型数据"></a>日期和时间类型数据</h2><table>
 <thead>
 <tr>
 <th>数据类型名称</th>
@@ -503,36 +499,33 @@
 <th>中文描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>DATE</code></td>
-<td>A date. The supported range is <code>'1000-01-01'</code> to <code>'9999-12-31'</code>. MySQL displays <code>DATE</code> values in <code>'YYYY-MM-DD'</code> format, but permits assignment of values to <code>DATE</code> columns using either strings or numbers.</td>
-<td>日期。支持范围是 <code>'1000-01-01'</code> ~ <code>'9999-12-31'</code>。Mysql 用 <code>'YYYY-MM-DD'</code> 格式显示 <code>DATE</code> 值，但允许使用字符串或数字分配给 <code>DATE</code> <code>column</code>。</td>
+<td>A date. The supported range is <code>&#39;1000-01-01&#39;</code> to <code>&#39;9999-12-31&#39;</code>. MySQL displays <code>DATE</code> values in <code>&#39;YYYY-MM-DD&#39;</code> format, but permits assignment of values to <code>DATE</code> columns using either strings or numbers.</td>
+<td>日期。支持范围是 <code>&#39;1000-01-01&#39;</code> ~ <code>&#39;9999-12-31&#39;</code>。Mysql 用 <code>&#39;YYYY-MM-DD&#39;</code> 格式显示 <code>DATE</code> 值，但允许使用字符串或数字分配给 <code>DATE</code> <code>column</code>。</td>
 </tr>
 <tr>
 <td><code>DATETIME</code><em><code>[(fsp)]</code></em></td>
-<td>A date and time combination. The supported range is <code>'1000-01-01 00:00:00.000000'</code> to <code>'9999-12-31 23:59:59.999999'</code>. MySQL displays <code>DATETIME</code> values in <code>'YYYY-MM-DD hh:mm:ss[.fraction]'</code> format, but permits assignment of values to <code>DATETIME</code> columns using either strings or numbers. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>. Automatic initialization and updating to the current date and time for <code>DATETIME</code> columns can be specified using <code>DEFAULT</code> and <code>ON UPDATE</code> column definition clauses, as described in Section 11.3.5, “Automatic Initialization and Updating for <code>TIMESTAMP</code> and <code>DATETIME</code>”.</td>
-<td>日期和时间组合。支持范围是 <code>'1000-01-01 00:00:00.000000'</code> ~ <code>'9999-12-31 23:59:59.999999'</code>。Mysql 用 <code>'YYYY-MM-DD hh:mm:ss[.fraction]'</code> 格式显示 <code>DATETIME</code> 值，但允许使用字符串或数字分配给 <code>DATETIME</code> <code>column</code>。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。指定当前日期和时间自动初始化和更新使用 <code>DEFAULT</code> 和 <code>ON UPDATE</code> <code>column</code> 定义条款，已描述在 11.3.5 部分，“自动初始化和更新 <code>TIMESTAMP</code> 和 <code>DATETIME</code>”。</td>
+<td>A date and time combination. The supported range is <code>&#39;1000-01-01 00:00:00.000000&#39;</code> to <code>&#39;9999-12-31 23:59:59.999999&#39;</code>. MySQL displays <code>DATETIME</code> values in <code>&#39;YYYY-MM-DD hh:mm:ss[.fraction]&#39;</code> format, but permits assignment of values to <code>DATETIME</code> columns using either strings or numbers. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>. Automatic initialization and updating to the current date and time for <code>DATETIME</code> columns can be specified using <code>DEFAULT</code> and <code>ON UPDATE</code> column definition clauses, as described in Section 11.3.5, “Automatic Initialization and Updating for <code>TIMESTAMP</code> and <code>DATETIME</code>”.</td>
+<td>日期和时间组合。支持范围是 <code>&#39;1000-01-01 00:00:00.000000&#39;</code> ~ <code>&#39;9999-12-31 23:59:59.999999&#39;</code>。Mysql 用 <code>&#39;YYYY-MM-DD hh:mm:ss[.fraction]&#39;</code> 格式显示 <code>DATETIME</code> 值，但允许使用字符串或数字分配给 <code>DATETIME</code> <code>column</code>。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。指定当前日期和时间自动初始化和更新使用 <code>DEFAULT</code> 和 <code>ON UPDATE</code> <code>column</code> 定义条款，已描述在 11.3.5 部分，“自动初始化和更新 <code>TIMESTAMP</code> 和 <code>DATETIME</code>”。</td>
 </tr>
 <tr>
 <td><code>TIMESTAMP</code><em><code>[(fsp)]</code></em></td>
-<td>A timestamp. The range is <code>'1970-01-01 00:00:01.000000'</code> UTC to <code>'2038-01-19 03:14:07.999999'</code> UTC. <code>TIMESTAMP</code> values are stored as the number of seconds since the epoch (<code>'1970-01-01 00:00:00'</code> UTC). A <code>TIMESTAMP</code> cannot represent the value <code>'1970-01-01 00:00:00'</code> because that is equivalent to <code>0</code> seconds from the epoch and the value <code>0</code> is reserved for representing <code>'0000-00-00 00:00:00'</code>, the “zero” <code>TIMESTAMP</code> value. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>. The way the server handles <code>TIMESTAMP</code> definitions depends on the value of the <code>explicit_defaults_for_timestamp</code> system variable (see Section 5.1.7, “Server System Variables”). If <code>explicit_defaults_for_timestamp</code> is enabled, there is no automatic assignment of the <code>DEFAULT CURRENT_TIMESTAMP</code> or <code>ON UPDATE CURRENT_TIMESTAMP</code> attributes to any <code>TIMESTAMP</code> column. They must be included explicitly in the column definition. Also, any <code>TIMESTAMP</code> not explicitly declared as <code>NOT NULL</code> permits <code>NULL</code> values. If <code>explicit_defaults_for_timestamp</code> is disabled, the server handles <code>TIMESTAMP</code> as follows: Unless specified otherwise, the first <code>TIMESTAMP</code> column in a table is defined to be automatically set to the date and time of the most recent modification if not explicitly assigned a value. This makes <code>TIMESTAMP</code> useful for recording the timestamp of an <code>INSERT</code> or <code>UPDATE</code> operation. You can also set any <code>TIMESTAMP</code> column to the current date and time by assigning it a <code>NULL</code> value, unless it has been defined with the <code>NULL</code> attribute to permit <code>NULL</code> values. Automatic initialization and updating to the current date and time can be specified using <code>DEFAULT CURRENT_TIMESTAMP</code> and <code>ON UPDATE CURRENT_TIMESTAMP</code> column definition clauses. By default, the first <code>TIMESTAMP</code> column has these properties, as previously noted. However, any <code>TIMESTAMP</code> column in a table can be defined to have these properties.</td>
-<td>时间戳。范围是 <code>'1970-01-01 00:00:01.000000'</code> UTC ~ <code>'2038-01-19 03:14:07.999999'</code> UTC。<code>TIMESTAMP</code> 值存储的是纪元以来的秒数（<code>'1970-01-01 00:00:00'</code> UTC）。<code>TIMESTAMP</code> 不能表示值 <code>1970-01-01 00:00:00</code>，因为相当于距纪元 <code>0</code> 秒，而值 <code>0</code> 保留用于表示 <code>0000-00-00 00:00:00</code>，即 “零” <code>TIMESTAMP</code> 值。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。服务器处理 <code>TIMESTAMP</code> 定于的方式取决于系统变量值 <code>explicit_defaults_for_timestamp</code>（见 5.1.7 部分，“服务器系统变量”）。如果启用 <code>explicit_defaults_for_timestamp</code>，则不会自动分配 <code>CURRENT_TIMESTAMP</code> 或 <code>ON UPDATE CURRENT_TIMESTAMP</code> 属性到任何 <code>TIMESTAMP</code> <code>column</code>。它们必须明确包含在 <code>column</code> 定义中。还有，任何 <code>TIMESTAMP</code> 未被明确声明为 <code>NOT NULL</code> 允许 <code>NULL</code> 值。如果禁用 <code>explicit_defaults_for_timestamp</code> ，服务器处理 <code>TIMESTAMP</code> 如下：除非指定其他的，否则表中首个 <code>TIMESTAMP</code> <code>column</code> 会定义为自动设置日期和时间，如果没有明确分配值的话。这使记录时间戳进行 <code>INSERT</code> 或 <code>UPDATE</code> 操作有用。你还能设置任何 <code>TINESTAMP</code> <code>column</code> ，对当前日期和时间分配一个 <code>NULL</code> 值，除非它已定义 <code>NULL</code> 属性来允许 <code>NULL</code> 值。能对指定使用 <code>DEFAULT CURRENT_TIMESTAMP</code> 和 <code>ON UPDATE CURRENT_TIMESTAMP</code> <code>column</code> 的定义条款，自动初始化和更新当前日期和时间。默认情况，首个 <code>TIMESTAMP</code> <code>column</code> 有这些属性，正如之前提到的。然而，任何 <code>TIMESTAMP</code> <code>column</code> 在表中都可定义这些属性。</td>
+<td>A timestamp. The range is <code>&#39;1970-01-01 00:00:01.000000&#39;</code> UTC to <code>&#39;2038-01-19 03:14:07.999999&#39;</code> UTC. <code>TIMESTAMP</code> values are stored as the number of seconds since the epoch (<code>&#39;1970-01-01 00:00:00&#39;</code> UTC). A <code>TIMESTAMP</code> cannot represent the value <code>&#39;1970-01-01 00:00:00&#39;</code> because that is equivalent to <code>0</code> seconds from the epoch and the value <code>0</code> is reserved for representing <code>&#39;0000-00-00 00:00:00&#39;</code>, the “zero” <code>TIMESTAMP</code> value. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>. The way the server handles <code>TIMESTAMP</code> definitions depends on the value of the <code>explicit_defaults_for_timestamp</code> system variable (see Section 5.1.7, “Server System Variables”). If <code>explicit_defaults_for_timestamp</code> is enabled, there is no automatic assignment of the <code>DEFAULT CURRENT_TIMESTAMP</code> or <code>ON UPDATE CURRENT_TIMESTAMP</code> attributes to any <code>TIMESTAMP</code> column. They must be included explicitly in the column definition. Also, any <code>TIMESTAMP</code> not explicitly declared as <code>NOT NULL</code> permits <code>NULL</code> values. If <code>explicit_defaults_for_timestamp</code> is disabled, the server handles <code>TIMESTAMP</code> as follows: Unless specified otherwise, the first <code>TIMESTAMP</code> column in a table is defined to be automatically set to the date and time of the most recent modification if not explicitly assigned a value. This makes <code>TIMESTAMP</code> useful for recording the timestamp of an <code>INSERT</code> or <code>UPDATE</code> operation. You can also set any <code>TIMESTAMP</code> column to the current date and time by assigning it a <code>NULL</code> value, unless it has been defined with the <code>NULL</code> attribute to permit <code>NULL</code> values. Automatic initialization and updating to the current date and time can be specified using <code>DEFAULT CURRENT_TIMESTAMP</code> and <code>ON UPDATE CURRENT_TIMESTAMP</code> column definition clauses. By default, the first <code>TIMESTAMP</code> column has these properties, as previously noted. However, any <code>TIMESTAMP</code> column in a table can be defined to have these properties.</td>
+<td>时间戳。范围是 <code>&#39;1970-01-01 00:00:01.000000&#39;</code> UTC ~ <code>&#39;2038-01-19 03:14:07.999999&#39;</code> UTC。<code>TIMESTAMP</code> 值存储的是纪元以来的秒数（<code>&#39;1970-01-01 00:00:00&#39;</code> UTC）。<code>TIMESTAMP</code> 不能表示值 <code>1970-01-01 00:00:00</code>，因为相当于距纪元 <code>0</code> 秒，而值 <code>0</code> 保留用于表示 <code>0000-00-00 00:00:00</code>，即 “零” <code>TIMESTAMP</code> 值。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。服务器处理 <code>TIMESTAMP</code> 定于的方式取决于系统变量值 <code>explicit_defaults_for_timestamp</code>（见 5.1.7 部分，“服务器系统变量”）。如果启用 <code>explicit_defaults_for_timestamp</code>，则不会自动分配 <code>CURRENT_TIMESTAMP</code> 或 <code>ON UPDATE CURRENT_TIMESTAMP</code> 属性到任何 <code>TIMESTAMP</code> <code>column</code>。它们必须明确包含在 <code>column</code> 定义中。还有，任何 <code>TIMESTAMP</code> 未被明确声明为 <code>NOT NULL</code> 允许 <code>NULL</code> 值。如果禁用 <code>explicit_defaults_for_timestamp</code> ，服务器处理 <code>TIMESTAMP</code> 如下：除非指定其他的，否则表中首个 <code>TIMESTAMP</code> <code>column</code> 会定义为自动设置日期和时间，如果没有明确分配值的话。这使记录时间戳进行 <code>INSERT</code> 或 <code>UPDATE</code> 操作有用。你还能设置任何 <code>TINESTAMP</code> <code>column</code> ，对当前日期和时间分配一个 <code>NULL</code> 值，除非它已定义 <code>NULL</code> 属性来允许 <code>NULL</code> 值。能对指定使用 <code>DEFAULT CURRENT_TIMESTAMP</code> 和 <code>ON UPDATE CURRENT_TIMESTAMP</code> <code>column</code> 的定义条款，自动初始化和更新当前日期和时间。默认情况，首个 <code>TIMESTAMP</code> <code>column</code> 有这些属性，正如之前提到的。然而，任何 <code>TIMESTAMP</code> <code>column</code> 在表中都可定义这些属性。</td>
 </tr>
 <tr>
 <td><code>TIME</code><em><code>[(fsp)]</code></em></td>
-<td>A time. The range is <code>'-838:59:59.000000'</code> to <code>'838:59:59.000000'</code>. MySQL displays <code>TIME</code> values in <em><code>'hh:mm:ss[.fraction]'</code></em> format, but permits assignment of values to <code>TIME</code> columns using either strings or numbers. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>.</td>
-<td>时间。范围是 <code>'-838:59:59.000000'</code> ~ <code>'838:59:59.000000'</code>。MySQL 在 <code>'hh:mm:ss[.fraction]'</code> 格式中显示 <code>TIME</code>，但是允许使用字符串或数字进行分配 <code>TIME</code> <code>column</code> 的值。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。</td>
+<td>A time. The range is <code>&#39;-838:59:59.000000&#39;</code> to <code>&#39;838:59:59.000000&#39;</code>. MySQL displays <code>TIME</code> values in <em><code>&#39;hh:mm:ss[.fraction]&#39;</code></em> format, but permits assignment of values to <code>TIME</code> columns using either strings or numbers. An optional <em><code>fsp</code></em> value in the range from <code>0</code> to <code>6</code> may be given to specify fractional seconds precision. A value of <code>0</code> signifies that there is no fractional part. If omitted, the default precision is <code>0</code>.</td>
+<td>时间。范围是 <code>&#39;-838:59:59.000000&#39;</code> ~ <code>&#39;838:59:59.000000&#39;</code>。MySQL 在 <code>&#39;hh:mm:ss[.fraction]&#39;</code> 格式中显示 <code>TIME</code>，但是允许使用字符串或数字进行分配 <code>TIME</code> <code>column</code> 的值。可选值 <em><code>fsp</code></em> ，从范围 <code>0</code> ~ <code>6</code> 中给定，用于指定小数秒精度。<code>0</code> 表示没有小数部分。如果省略，默认精度是 <code>0</code>。</td>
 </tr>
 <tr>
 <td><code>YEAR</code><em><code>[(4)]</code></em></td>
 <td>A year in four-digit format. MySQL displays <code>YEAR</code> values in <code>YYYY</code> format, but permits assignment of values to <code>YEAR</code> columns using either strings or numbers. Values display as <code>1901</code> to <code>2155</code>, and <code>0000</code>. For additional information about <code>YEAR</code> display format and interpretation of input values, see Section 11.3.3, “The YEAR Type”.</td>
 <td>四位数格式的年份。MySQL 在 <code>YYYY</code> 格式中显示 <code>YEAR</code> 的值，但是允许使用字符串或数字进行分配 <code>YEAR</code> <code>column</code> 的值。值从 <code>1901</code> ~ <code>2155</code>，和 <code>0000</code> 作为显示。关于 <code>YEAR</code> 显示格式解释输入值的附加信息，见 11.3.3 部分，“年份类型”</td>
 </tr>
-</tbody>
-</table>
-<h2 id="字符串类型数据"><a class="markdownIt-Anchor" href="#字符串类型数据"></a> 字符串类型数据</h2>
-<table>
+</tbody></table>
+<h2 id="字符串类型数据"><a href="#字符串类型数据" class="headerlink" title="字符串类型数据"></a>字符串类型数据</h2><table>
 <thead>
 <tr>
 <th>数据类型名称</th>
@@ -540,79 +533,77 @@
 <th>中文描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><em><code>[NATIONAL]</code></em> <code>CHAR</code><em><code>[(M)]</code></em> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A fixed-length string that is always right-padded with spaces to the specified length when stored. <em><code>M</code></em> represents the column length in characters. The range of <em><code>M</code></em> is <code>0</code> to <code>255</code>. If <em><code>M</code></em> is omitted, the length is <code>1</code>. <code>CHAR</code> is shorthand for <code>CHARACTER</code>. <code>NATIONAL CHAR</code> (or its equivalent short form, <code>NCHAR</code>) is the standard SQL way to define that a <code>CHAR</code> column should use some predefined character set. MySQL uses <code>utf8</code> as this predefined character set. Section 10.3.7, “The National Character Set”. The <code>CHAR BYTE</code> data type is an alias for the <code>BINARY</code> data type. This is a compatibility feature. MySQL permits you to create a column of type <code>CHAR(0)</code>. This is useful primarily when you have to be compliant with old applications that depend on the existence of a column but that do not actually use its value. <code>CHAR(0)</code> is also quite nice when you need a column that can take only two values: A column that is defined as <code>CHAR(0) NULL</code> occupies only one bit and can take only the values <code>NULL</code> and <code>''</code> (the empty string).</td>
-<td>定长字符串，存储时总是右填充空格到指定长度。<em><code>M</code></em> 表示在字符中列长度。<em><code>M</code></em> 的范围是 <code>0</code> ~ <code>255</code>。如果 <em><code>M</code></em> 省略，长度为 <code>1</code>。<code>CHAR</code> 是 <code>CHARACTER</code> 的简写。<code>NATIONAL CHAR</code> （或它的简短形式，<code>NCHAR</code>）是 SQL 标准定义方法，<code>CHAR</code> 列应使用一些预定义字符集。MySQL 使用 <code>utf8</code> 作为预定义字符集。10.3.7 部分，“国家字符集”。<code>CHAR BYTE</code> 数据类型是 <code>BINARY</code> 数据类型的别名。这是兼容特性。MySQL 允许你创建 <code>CHAR(0)</code> 类型的列。这主要在你要遵守旧应用依赖于所在列，但并不使用它的值时很有用。<code>CHAR(0)</code> 也相当微妙，当你需要列只能取两个值时：列被定义为 <code>CHAR(0) NULL</code> 只占一位，且只取值 <code>NULL</code> 和 <code>''</code> （空字符串）。</td>
+<td>A fixed-length string that is always right-padded with spaces to the specified length when stored. <em><code>M</code></em> represents the column length in characters. The range of <em><code>M</code></em> is <code>0</code> to <code>255</code>. If <em><code>M</code></em> is omitted, the length is <code>1</code>. <code>CHAR</code> is shorthand for <code>CHARACTER</code>. <code>NATIONAL CHAR</code> (or its equivalent short form, <code>NCHAR</code>) is the standard SQL way to define that a <code>CHAR</code> column should use some predefined character set. MySQL uses <code>utf8</code> as this predefined character set. Section 10.3.7, “The National Character Set”. The <code>CHAR BYTE</code> data type is an alias for the <code>BINARY</code> data type. This is a compatibility feature. MySQL permits you to create a column of type <code>CHAR(0)</code>. This is useful primarily when you have to be compliant with old applications that depend on the existence of a column but that do not actually use its value. <code>CHAR(0)</code> is also quite nice when you need a column that can take only two values: A column that is defined as <code>CHAR(0) NULL</code> occupies only one bit and can take only the values <code>NULL</code> and <code>&#39;&#39;</code> (the empty string).</td>
+<td>定长字符串，存储时总是右填充空格到指定长度。_<code>M</code>_ 表示在字符中列长度。_<code>M</code>_ 的范围是 <code>0</code> ~ <code>255</code>。如果 <em><code>M</code></em> 省略，长度为 <code>1</code>。<code>CHAR</code> 是 <code>CHARACTER</code> 的简写。<code>NATIONAL CHAR</code> （或它的简短形式，<code>NCHAR</code>）是 SQL 标准定义方法，<code>CHAR</code> 列应使用一些预定义字符集。MySQL 使用 <code>utf8</code> 作为预定义字符集。10.3.7 部分，“国家字符集”。<code>CHAR BYTE</code> 数据类型是 <code>BINARY</code> 数据类型的别名。这是兼容特性。MySQL 允许你创建 <code>CHAR(0)</code> 类型的列。这主要在你要遵守旧应用依赖于所在列，但并不使用它的值时很有用。<code>CHAR(0)</code> 也相当微妙，当你需要列只能取两个值时：列被定义为 <code>CHAR(0) NULL</code> 只占一位，且只取值 <code>NULL</code> 和 <code>&#39;&#39;</code> （空字符串）。</td>
 </tr>
 <tr>
 <td><em><code>[NATIONAL]</code></em> <code>VARCHAR(M)</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
 <td>A variable-length string. <em><code>M</code></em> represents the maximum column length in characters. The range of <em><code>M</code></em> is <code>0</code> to <code>65,535</code>. The effective maximum length of a <code>VARCHAR</code> is subject to the maximum row size (<code>65,535</code> bytes, which is shared among all columns) and the character set used. For example, <code>utf8</code> characters can require up to three bytes per character, so a <code>VARCHAR</code> column that uses the <code>utf8</code> character set can be declared to be a maximum of <code>21,844</code> characters. See Section C.10.4, “Limits on Table Column Count and Row Size”. MySQL stores <code>VARCHAR</code> values as a 1-byte or 2-byte length prefix plus data. The length prefix indicates the number of bytes in the value. A <code>VARCHAR</code> column uses one length byte if values require no more than <code>255</code> bytes, two length bytes if values may require more than <code>255</code> bytes. <code>VARCHAR</code> is shorthand for <code>CHARACTER VARYING</code>. <code>NATIONAL VARCHAR</code> is the standard SQL way to define that a <code>VARCHAR</code> column should use some predefined character set. MySQL uses <code>utf8</code> as this predefined character set. Section 10.3.7, “The National Character Set”. <code>NVARCHAR</code> is shorthand for <code>NATIONAL VARCHAR</code>.</td>
-<td>变长字符串。<em><code>M</code></em> 表示在字符中表示列最大长度。<em><code>M</code></em> 范围是 <code>0</code> ~ <code>65,535</code>。<code>VARCHAR</code> 最大有效长度取决于最大行大小（<code>65,535</code> 字节，分享于各列之间）和使用的字符集。例如，<code>utf8</code> 字符每字符最多需要三字节，所以使用 <code>utf8</code> 字符集的 <code>VARCHAR</code> 列最大能声明到 <code>21,844</code> 字符。见 C.10.4 部分，“ 表列数和行大小的限制”。MySQL 存储 <code>VARCHAR</code> 时，值为 1 个字节或 2 个字节长度前缀加上数据。长度前缀表示值中字节数。如果值不需要超过 <code>255</code> 字节，<code>VARCHAR</code> 列使用一个字节长度，如果值需要超过 <code>255</code> 字节，则用两个字节长度。<code>VARCHAR</code> 是 <code>CHARACTER VARYING</code> 的简短形式。<code>NATIONAL VARCHAR</code> 是 SQL 标准定义方法，<code>VARCHAR</code> 列应使用一些预定义字符集。MySQL 使用 <code>utf8</code> 作为预定义字符集。10.3.7 部分，“国家字符集”。<code>NVARCHAR</code> 是 <code>NATIONAL VARCHAR</code> 的简短形式。</td>
+<td>变长字符串。_<code>M</code>_ 表示在字符中表示列最大长度。_<code>M</code>_ 范围是 <code>0</code> ~ <code>65,535</code>。<code>VARCHAR</code> 最大有效长度取决于最大行大小（<code>65,535</code> 字节，分享于各列之间）和使用的字符集。例如，<code>utf8</code> 字符每字符最多需要三字节，所以使用 <code>utf8</code> 字符集的 <code>VARCHAR</code> 列最大能声明到 <code>21,844</code> 字符。见 C.10.4 部分，“ 表列数和行大小的限制”。MySQL 存储 <code>VARCHAR</code> 时，值为 1 个字节或 2 个字节长度前缀加上数据。长度前缀表示值中字节数。如果值不需要超过 <code>255</code> 字节，<code>VARCHAR</code> 列使用一个字节长度，如果值需要超过 <code>255</code> 字节，则用两个字节长度。<code>VARCHAR</code> 是 <code>CHARACTER VARYING</code> 的简短形式。<code>NATIONAL VARCHAR</code> 是 SQL 标准定义方法，<code>VARCHAR</code> 列应使用一些预定义字符集。MySQL 使用 <code>utf8</code> 作为预定义字符集。10.3.7 部分，“国家字符集”。<code>NVARCHAR</code> 是 <code>NATIONAL VARCHAR</code> 的简短形式。</td>
 </tr>
 <tr>
 <td><code>BINARY</code><em><code>[(M)]</code></em></td>
 <td>The <code>BINARY</code> type is similar to the <code>CHAR</code> type, but stores binary byte strings rather than nonbinary character strings. An optional length <em><code>M</code></em> represents the column length in bytes. If omitted, <em><code>M</code></em> defaults to <code>1</code>.</td>
-<td><code>BINARY</code> 类型类似于 <code>CHAR</code> 类型，但存储的是二进制字节字符串并不是非二进制字符串。可选长度 <em><code>M</code></em> 表示列中的字节长度。如果省略，<em><code>M</code></em> 默认为 <code>1</code>。</td>
+<td><code>BINARY</code> 类型类似于 <code>CHAR</code> 类型，但存储的是二进制字节字符串并不是非二进制字符串。可选长度 <em><code>M</code></em> 表示列中的字节长度。如果省略，_<code>M</code>_ 默认为 <code>1</code>。</td>
 </tr>
 <tr>
 <td><code>VARBINARY(</code><em><code>M</code></em><code>)</code></td>
 <td>The <code>VARBINARY</code> type is similar to the <code>VARCHAR</code> type, but stores binary byte strings rather than nonbinary character strings. <em><code>M</code></em> represents the maximum column length in bytes.</td>
-<td><code>VARBINARY</code> 类型类似于 <code>VARCHAR</code> 类型，但存储的是二进制字节字符串并不是非二进制字符串。<em><code>M</code></em> 表示列中的最大字节长度。</td>
+<td><code>VARBINARY</code> 类型类似于 <code>VARCHAR</code> 类型，但存储的是二进制字节字符串并不是非二进制字符串。_<code>M</code>_ 表示列中的最大字节长度。</td>
 </tr>
 <tr>
 <td><code>TINYBLOB</code></td>
-<td>A <code>BLOB</code> column with a maximum length of <code>255</code> (2<sup>8</sup> − 1) bytes. Each <code>TINYBLOB</code> value is stored using a 1-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>BLOB</code> 列最大字节长度 <code>255</code> (2<sup>8</sup> - 1)。每个 <code>TINYBLOB</code> 值用 1 字节长度储存前缀，表示值中的字节数。</td>
+<td>A <code>BLOB</code> column with a maximum length of <code>255</code> (2^8^ − 1) bytes. Each <code>TINYBLOB</code> value is stored using a 1-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>BLOB</code> 列最大字节长度 <code>255</code> (2^8^ - 1)。每个 <code>TINYBLOB</code> 值用 1 字节长度储存前缀，表示值中的字节数。</td>
 </tr>
 <tr>
 <td><code>TINYTEXT</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A <code>TEXT</code> column with a maximum length of <code>255</code> (2<sup>8</sup> − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>TINYTEXT</code> value is stored using a 1-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>TEXT</code> 列最大字符长度 <code>255</code> (2<sup>8</sup> - 1)。如果值包含多字节字符，则最大有效长度较少。每个 <code>TINYTEXT</code> 值用 1 字节长度前缀存储，来表示值中的字节数</td>
+<td>A <code>TEXT</code> column with a maximum length of <code>255</code> (2^8^ − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>TINYTEXT</code> value is stored using a 1-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>TEXT</code> 列最大字符长度 <code>255</code> (2^8^ - 1)。如果值包含多字节字符，则最大有效长度较少。每个 <code>TINYTEXT</code> 值用 1 字节长度前缀存储，来表示值中的字节数</td>
 </tr>
 <tr>
 <td><code>BLOB</code><em><code>[(M)]</code></em></td>
-<td>A <code>BLOB</code> column with a maximum length of <code>65,535</code> (2<sup>16</sup> − 1) bytes. Each <code>BLOB</code> value is stored using a 2-byte length prefix that indicates the number of bytes in the value. An optional length <em><code>M</code></em> can be given for this type. If this is done, MySQL creates the column as the smallest <code>BLOB</code> type large enough to hold values <em><code>M</code></em> bytes long.</td>
-<td><code>BLOB</code> 列最大字节长度 <code>65,535</code> (2<sup>16</sup> - 1)。每个 <code>BLOB</code> 值使用 2 字节长度保存前缀，来表示值中的字节数。可以给这个类型可选长度 <em><code>M</code></em> 。如果这样做了，MySQL 创建该列作为最小 <code>BLOB</code> 类型，最大能保存到 <em><code>M</code></em> 字符长的值。</td>
+<td>A <code>BLOB</code> column with a maximum length of <code>65,535</code> (2^16^ − 1) bytes. Each <code>BLOB</code> value is stored using a 2-byte length prefix that indicates the number of bytes in the value. An optional length <em><code>M</code></em> can be given for this type. If this is done, MySQL creates the column as the smallest <code>BLOB</code> type large enough to hold values <em><code>M</code></em> bytes long.</td>
+<td><code>BLOB</code> 列最大字节长度 <code>65,535</code> (2^16^ - 1)。每个 <code>BLOB</code> 值使用 2 字节长度保存前缀，来表示值中的字节数。可以给这个类型可选长度 <em><code>M</code></em> 。如果这样做了，MySQL 创建该列作为最小 <code>BLOB</code> 类型，最大能保存到 <em><code>M</code></em> 字符长的值。</td>
 </tr>
 <tr>
 <td><code>TEXT</code><em><code>[(M)]</code></em> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A <code>TEXT</code> column with a maximum length of <code>65,535</code> (2<sup>16</sup> − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>TEXT</code> value is stored using a 2-byte length prefix that indicates the number of bytes in the value. An optional length <em><code>M</code></em> can be given for this type. If this is done, MySQL creates the column as the smallest <code>TEXT</code> type large enough to hold values <em><code>M</code></em> characters long.</td>
-<td><code>TEXT</code> 列最大字符长度 <code>65,535</code> (2<sup>16</sup> - 1)。如果值包含多字节字符，则最大有效长度较少。每个 <code>TEXT</code> 值使用 2 字节长度存储前缀，表示值中字节数。可给这个类型可选长度 <em><code>M</code></em> 。如果这样做了，MySQL 创建该列作为最小 <code>TEXT</code> 类型，最大能保存到 <em><code>M</code></em> 字符长的值。</td>
+<td>A <code>TEXT</code> column with a maximum length of <code>65,535</code> (2^16^ − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>TEXT</code> value is stored using a 2-byte length prefix that indicates the number of bytes in the value. An optional length <em><code>M</code></em> can be given for this type. If this is done, MySQL creates the column as the smallest <code>TEXT</code> type large enough to hold values <em><code>M</code></em> characters long.</td>
+<td><code>TEXT</code> 列最大字符长度 <code>65,535</code> (2^16^ - 1)。如果值包含多字节字符，则最大有效长度较少。每个 <code>TEXT</code> 值使用 2 字节长度存储前缀，表示值中字节数。可给这个类型可选长度 <em><code>M</code></em> 。如果这样做了，MySQL 创建该列作为最小 <code>TEXT</code> 类型，最大能保存到 <em><code>M</code></em> 字符长的值。</td>
 </tr>
 <tr>
 <td><code>MEDIUMBLOB</code></td>
-<td>A <code>BLOB</code> column with a maximum length of <code>16,777,215</code> (2<sup>24</sup> − 1) bytes. Each <code>MEDIUMBLOB</code> value is stored using a 3-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>BLOB</code> 列最大字节长度 <code>16,777,215</code> (2<sup>24</sup> - 1)。每个 <code>MEDIUMBLOB</code> 值使用 3 字节长度存储前缀，来表示值中的字节数。</td>
+<td>A <code>BLOB</code> column with a maximum length of <code>16,777,215</code> (2^24^ − 1) bytes. Each <code>MEDIUMBLOB</code> value is stored using a 3-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>BLOB</code> 列最大字节长度 <code>16,777,215</code> (2^24^ - 1)。每个 <code>MEDIUMBLOB</code> 值使用 3 字节长度存储前缀，来表示值中的字节数。</td>
 </tr>
 <tr>
 <td><code>MEDIUMTEXT</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A <code>TEXT</code> column with a maximum length of <code>16,777,215</code> (2<sup>24</sup> − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>MEDIUMTEXT</code> value is stored using a 3-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>TEXT</code> 列最大字符长度 <code>16,777,215</code> (2<sup>24</sup> - 1)。如果值包含多字节字符，最大有效长度较少。每个 <code>MEDIUMTEXT</code> 值使用 3 字节长度存储前缀，来表示值中的字节数。</td>
+<td>A <code>TEXT</code> column with a maximum length of <code>16,777,215</code> (2^24^ − 1) characters. The effective maximum length is less if the value contains multibyte characters. Each <code>MEDIUMTEXT</code> value is stored using a 3-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>TEXT</code> 列最大字符长度 <code>16,777,215</code> (2^24^ - 1)。如果值包含多字节字符，最大有效长度较少。每个 <code>MEDIUMTEXT</code> 值使用 3 字节长度存储前缀，来表示值中的字节数。</td>
 </tr>
 <tr>
 <td><code>LONGBLOB</code></td>
-<td>A <code>BLOB</code> column with a maximum length of <code>4,294,967,295</code> or 4GB (2<sup>32</sup> − 1) bytes. The effective maximum length of <code>LONGBLOB</code> columns depends on the configured maximum packet size in the client/server protocol and available memory. Each <code>LONGBLOB</code> value is stored using a 4-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>BLOB</code> 列最大字节长度 <code>4,294,967,295</code> 或 <code>4</code> GB。最大有效长度取决于 <code>LONGBLOB</code> 列在 客服端/服务端 协议中配置好的最大包大小和可用内存。每个 <code>LONGBLOB</code> 值使用 4 字节长度存储前缀，来表示值中的字节数。</td>
+<td>A <code>BLOB</code> column with a maximum length of <code>4,294,967,295</code> or 4GB (2^32^ − 1) bytes. The effective maximum length of <code>LONGBLOB</code> columns depends on the configured maximum packet size in the client&#x2F;server protocol and available memory. Each <code>LONGBLOB</code> value is stored using a 4-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>BLOB</code> 列最大字节长度 <code>4,294,967,295</code> 或 <code>4</code> GB。最大有效长度取决于 <code>LONGBLOB</code> 列在 客服端&#x2F;服务端 协议中配置好的最大包大小和可用内存。每个 <code>LONGBLOB</code> 值使用 4 字节长度存储前缀，来表示值中的字节数。</td>
 </tr>
 <tr>
 <td><code>LONGTEXT</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A <code>TEXT</code> column with a maximum length of <code>4,294,967,295</code> or 4GB (2<sup>32</sup> − 1) characters. The effective maximum length is less if the value contains multibyte characters. The effective maximum length of <code>LONGTEXT</code> columns also depends on the configured maximum packet size in the client/server protocol and available memory. Each <code>LONGTEXT</code> value is stored using a 4-byte length prefix that indicates the number of bytes in the value.</td>
-<td><code>TEXT</code> 列最大字符长度 <code>4,294,967,295</code> 或 <code>4</code> GB。如果值包含多字节字符，最大有效长度较少。最大有效长度取决于 <code>LONGTEXT</code> 列在 客服端/服务端 协议中配置好的最大包大小和可用内存。每个 <code>LONGTEXT</code> 值使用 4 字节长度存储前缀，来表示值中的字节数。</td>
+<td>A <code>TEXT</code> column with a maximum length of <code>4,294,967,295</code> or 4GB (2^32^ − 1) characters. The effective maximum length is less if the value contains multibyte characters. The effective maximum length of <code>LONGTEXT</code> columns also depends on the configured maximum packet size in the client&#x2F;server protocol and available memory. Each <code>LONGTEXT</code> value is stored using a 4-byte length prefix that indicates the number of bytes in the value.</td>
+<td><code>TEXT</code> 列最大字符长度 <code>4,294,967,295</code> 或 <code>4</code> GB。如果值包含多字节字符，最大有效长度较少。最大有效长度取决于 <code>LONGTEXT</code> 列在 客服端&#x2F;服务端 协议中配置好的最大包大小和可用内存。每个 <code>LONGTEXT</code> 值使用 4 字节长度存储前缀，来表示值中的字节数。</td>
 </tr>
 <tr>
-<td><em><code>ENUM('value1','value2',...)</code></em> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>An enumeration. A string object that can have only one value, chosen from the list of values <em><code>'value1'</code></em>, <em><code>'value2'</code></em>,<code>...</code>, <code>NULL</code> or the special <code>''</code> error value. <code>ENUM</code> values are represented internally as integers. An <code>ENUM</code> column can have a maximum of <code>65,535</code> distinct elements. (The practical limit is less than <code>3,000</code>.) A table can have no more than <code>255</code> unique element list definitions among its <code>ENUM</code> and <code>SET</code> columns considered as a group. For more information on these limits, see Section C.10.5, “Limits Imposed by .frm File Structure”.</td>
-<td>枚举。字符串对象，只能拥有一个值，从列表选择值 <code>'值1'</code>，<code>'值2'</code>，<code>...</code>，<code>NULL</code> 或特殊错误值 <code>''</code>。<code>ENUM</code> 值作为整数在内部体现。<code>ENUM</code> 列最大能有 <code>65,535</code> 个不同元素。（实际限制小于 <code>3,000</code>。）一个表不能拥有 <code>255</code> 个 唯一元素，列表定义中它的 <code>ENUM</code> 和 <code>SET</code> 列看作一组。这些限制更多说明，见 C.10.5 部分，“.frm 文件结构的限制”。</td>
+<td><em><code>ENUM(&#39;value1&#39;,&#39;value2&#39;,...)</code></em> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
+<td>An enumeration. A string object that can have only one value, chosen from the list of values <em><code>&#39;value1&#39;</code></em>, <em><code>&#39;value2&#39;</code></em>,<code>...</code>, <code>NULL</code> or the special <code>&#39;&#39;</code> error value. <code>ENUM</code> values are represented internally as integers. An <code>ENUM</code> column can have a maximum of <code>65,535</code> distinct elements. (The practical limit is less than <code>3,000</code>.) A table can have no more than <code>255</code> unique element list definitions among its <code>ENUM</code> and <code>SET</code> columns considered as a group. For more information on these limits, see Section C.10.5, “Limits Imposed by .frm File Structure”.</td>
+<td>枚举。字符串对象，只能拥有一个值，从列表选择值 <code>&#39;值1&#39;</code>，<code>&#39;值2&#39;</code>，<code>...</code>，<code>NULL</code> 或特殊错误值 <code>&#39;&#39;</code>。<code>ENUM</code> 值作为整数在内部体现。<code>ENUM</code> 列最大能有 <code>65,535</code> 个不同元素。（实际限制小于 <code>3,000</code>。）一个表不能拥有 <code>255</code> 个 唯一元素，列表定义中它的 <code>ENUM</code> 和 <code>SET</code> 列看作一组。这些限制更多说明，见 C.10.5 部分，“.frm 文件结构的限制”。</td>
 </tr>
 <tr>
-<td><code>SET('value1','value2',...)</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
-<td>A set. A string object that can have zero or more values, each of which must be chosen from the list of values <em><code>'value1'</code></em>, <em><code>'value2'</code></em>, <code>...</code> <code>SET</code> values are represented internally as integers. A <code>SET</code> column can have a maximum of <code>64</code> distinct members. A table can have no more than <code>255</code> unique element list definitions among its <code>ENUM</code> and <code>SET</code> columns considered as a group. For more information on this limit, see Section C.10.5, “Limits Imposed by .frm File Structure”.</td>
-<td>集合。字符串对象，拥有零或很多值，每个必须从列表值 <code>'值1'</code>，<code>'值2'</code>，<code>...</code> 中选择，<code>SET</code> 值作为整数在内部体现。<code>SET</code> 列最大拥有 <code>64</code> 不同成员。一个表不能拥有 <code>255</code> 个 唯一元素，列表定义中它的 <code>ENUM</code> 和 <code>SET</code> 列看作一组。限制的详情，见 C.10.5 部分，“.frm 文件结构的限制”。</td>
+<td><code>SET(&#39;value1&#39;,&#39;value2&#39;,...)</code> <em><code>[CHARACTER SET charset_name]</code></em> <em><code>[COLLATE collation_name]</code></em></td>
+<td>A set. A string object that can have zero or more values, each of which must be chosen from the list of values <em><code>&#39;value1&#39;</code></em>, <em><code>&#39;value2&#39;</code></em>, <code>...</code> <code>SET</code> values are represented internally as integers. A <code>SET</code> column can have a maximum of <code>64</code> distinct members. A table can have no more than <code>255</code> unique element list definitions among its <code>ENUM</code> and <code>SET</code> columns considered as a group. For more information on this limit, see Section C.10.5, “Limits Imposed by .frm File Structure”.</td>
+<td>集合。字符串对象，拥有零或很多值，每个必须从列表值 <code>&#39;值1&#39;</code>，<code>&#39;值2&#39;</code>，<code>...</code> 中选择，<code>SET</code> 值作为整数在内部体现。<code>SET</code> 列最大拥有 <code>64</code> 不同成员。一个表不能拥有 <code>255</code> 个 唯一元素，列表定义中它的 <code>ENUM</code> 和 <code>SET</code> 列看作一组。限制的详情，见 C.10.5 部分，“.frm 文件结构的限制”。</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
       
     </div>

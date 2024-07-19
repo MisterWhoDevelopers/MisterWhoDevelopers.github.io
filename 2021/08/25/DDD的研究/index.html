@@ -18,20 +18,20 @@
   
   
   <title>DDD的研究 | Hexo</title>
-  <meta name="description" content="DDD 四层架构图  在此架构中，上层模块可以调用下层模块，反之不行，即：  User Interface -&gt; Application | Domain | Infrastructure Application -&gt; Domain | Infrastructure Domain -&gt; Infrastructure   分层作用  用户接口层（User Interface） 用">
+  <meta name="description" content="DDD 四层架构图 在此架构中，上层模块可以调用下层模块，反之不行，即：  User Interface -&gt; Application | Domain | Infrastructure Application -&gt; Domain | Infrastructure Domain -&gt; Infrastructure  分层作用用户接口层（User Interface）用户接口层只用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DDD的研究">
 <meta property="og:url" content="https://misterwhodevelopers.github.io/2021/08/25/DDD%E7%9A%84%E7%A0%94%E7%A9%B6/index.html">
 <meta property="og:site_name" content="誰先生">
-<meta property="og:description" content="DDD 四层架构图  在此架构中，上层模块可以调用下层模块，反之不行，即：  User Interface -&gt; Application | Domain | Infrastructure Application -&gt; Domain | Infrastructure Domain -&gt; Infrastructure   分层作用  用户接口层（User Interface） 用">
+<meta property="og:description" content="DDD 四层架构图 在此架构中，上层模块可以调用下层模块，反之不行，即：  User Interface -&gt; Application | Domain | Infrastructure Application -&gt; Domain | Infrastructure Domain -&gt; Infrastructure  分层作用用户接口层（User Interface）用户接口层只用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png">
 <meta property="article:published_time" content="2021-08-25T01:23:04.000Z">
-<meta property="article:modified_time" content="2024-05-17T01:47:58.402Z">
+<meta property="article:modified_time" content="2024-07-19T06:55:38.089Z">
 <meta property="article:author" content="誰先生">
 <meta property="article:tag" content="DDD">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://gitee.com/Mr_Who/blog/raw/master/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png">
+<meta name="twitter:image" content="https://misterwhodevelopers.github.io/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://misterwhodevelopers.github.io/2021/08/25/DDD%E7%9A%84%E7%A0%94%E7%A9%B6/index.html">
   
@@ -387,40 +387,25 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="ddd-四层架构图"><a class="markdownIt-Anchor" href="#ddd-四层架构图"></a> DDD 四层架构图</h2>
-<p><img src="https://gitee.com/Mr_Who/blog/raw/master/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png" alt="DDD的研究1" /></p>
+        <h2 id="DDD-四层架构图"><a href="#DDD-四层架构图" class="headerlink" title="DDD 四层架构图"></a>DDD 四层架构图</h2><p><img src="https://misterwhodevelopers.github.io/images/DDD%E7%9A%84%E7%A0%94%E7%A9%B61.png" alt="DDD的研究1"></p>
 <p>在此架构中，上层模块可以调用下层模块，反之不行，即：</p>
 <ul>
 <li><code>User Interface</code> -&gt; <code>Application</code> | <code>Domain</code> | <code>Infrastructure</code></li>
 <li><code>Application</code> -&gt; <code>Domain</code> | <code>Infrastructure</code></li>
 <li><code>Domain</code> -&gt; <code>Infrastructure</code></li>
 </ul>
-<h2 id="分层作用"><a class="markdownIt-Anchor" href="#分层作用"></a> 分层作用</h2>
-<h5 id="用户接口层user-interface"><a class="markdownIt-Anchor" href="#用户接口层user-interface"></a> 用户接口层（User Interface）</h5>
-<p>用户接口层只用于处理用户显示和用户请求，它不应该包含领域或业务逻辑。如果用户界面使用了领域模型中的对象，那么此时的领域对象仅限于数据的渲染展现</p>
-<h5 id="应用层application"><a class="markdownIt-Anchor" href="#应用层application"></a> 应用层（Application）</h5>
-<p>定义软件要完成的任务，并且指挥表达领域概念的对象来解决问题。这一层所负责的工作对业务来说意义重大，也是与其它系统的应用层进行交互的必要渠道。应用层要尽量简单，不包含业务规则或者知识，而只为下一层中的领域对象协调任务，分配工作，使它们互相协作。它没有反映业务情况的状态，但是却可以具有另外一种状态，为用户或程序显示某个任务的进度。</p>
-<h5 id="领域层domain"><a class="markdownIt-Anchor" href="#领域层domain"></a> 领域层（Domain）</h5>
-<p>领域层（或模型层），负责表达业务概念，业务状态信息以及业务规则。尽管保存业务状态的技术细节是由基础设施层实现的，但是反映业务情况的状态是由本层控制并且使用的。领域层是业务软件的核心，领域模型位于这一层。</p>
-<h5 id="基础设施层infrastructure"><a class="markdownIt-Anchor" href="#基础设施层infrastructure"></a> 基础设施层（Infrastructure）</h5>
-<p>主要有 2 方面内容，一是为领域模型提供持久化机制，当软件需要持久化能力时候才需要进行规划；一是对其他层提供通用的技术支持能力，如消息通信，通用工具，配置等的实现；</p>
-<h2 id="领域对象"><a class="markdownIt-Anchor" href="#领域对象"></a> 领域对象</h2>
-<h5 id="实体entity"><a class="markdownIt-Anchor" href="#实体entity"></a> 实体（Entity）</h5>
-<p>许多对象不是由它们的属性来定义，而是通过一系列的连续性（continuity）和标识（identity）来从根本上定义的。只要一个对象在生命周期中能够保持连续性，并且独立于它的属性（即使这些属性对系统用户非常重要），那它就是一个实体。</p>
-<h5 id="值对象value-object"><a class="markdownIt-Anchor" href="#值对象value-object"></a> 值对象（Value Object）</h5>
-<p>当你只关心某个对象的属性时，该对象便可作为一个值对象。为其添加有意义的属性，并赋予它相应的行为。我们需要将值对象看成不变对象，不要给它任何身份标识，还应该尽量避免像实体对象一样的复杂性。</p>
-<h5 id="聚合aggregate"><a class="markdownIt-Anchor" href="#聚合aggregate"></a> 聚合（Aggregate）</h5>
-<p>实体的聚合，拥有聚合根，可为某一个实体实体的聚合，拥有聚合根，可为某一个实体</p>
-<h5 id="服务service"><a class="markdownIt-Anchor" href="#服务service"></a> 服务（Service）</h5>
-<p>当领域中的某个操作过程或转换过程不是实体或值对象的职责时，此时我们便成该将该操作放在一个单独的接口中，即领域服务。请确保该领域服务和通用语言是一致的；并且保证它是无状态的。</p>
-<h5 id="事件event"><a class="markdownIt-Anchor" href="#事件event"></a> 事件（Event）</h5>
-<p>领域事件是一个领域模型中极其重要的部分，用来表示领域中发生的事件。忽略不相关的领域活动，同时明确领域专家要跟踪或希望被通知的事情，或与其他模型对象中的状态更改相关联。</p>
-<h5 id="仓库repository"><a class="markdownIt-Anchor" href="#仓库repository"></a> 仓库（Repository）</h5>
-<p>仓库封装了获取对象的逻辑，领域对象无须和底层数据库交互，它只需要从仓库中获取对象即可。仓库可以存储对象的引用，当一个对象被创建后，它可能会被存储到仓库中，那么下次就可以从仓库取。如果用户请求的数据没在仓库中，则会从数据库里取，这就减少了底层交互的次数。</p>
-<h5 id="工厂factory"><a class="markdownIt-Anchor" href="#工厂factory"></a> 工厂（Factory）</h5>
-<p>实体和聚合通常是很复杂的，这就导致了很难去通过构造器来创建对象。</p>
-<h5 id="模块module"><a class="markdownIt-Anchor" href="#模块module"></a> 模块（Module）</h5>
-<p>对于一个复杂的应用来说，领域模型将会变的越来越大，以至于很难去描述和理解，更别提模型之间的关系了。模块的出现，就是为了组织统一的模型概念来达到减少复杂性的目的的。而另一个原因则是模块可以提高代码质量和可维护性，比如我们常说的高内聚，低耦合就是要提倡将相关的类内聚在一起实现模块化。</p>
+<h2 id="分层作用"><a href="#分层作用" class="headerlink" title="分层作用"></a>分层作用</h2><h5 id="用户接口层（User-Interface）"><a href="#用户接口层（User-Interface）" class="headerlink" title="用户接口层（User Interface）"></a>用户接口层（User Interface）</h5><p>用户接口层只用于处理用户显示和用户请求，它不应该包含领域或业务逻辑。如果用户界面使用了领域模型中的对象，那么此时的领域对象仅限于数据的渲染展现</p>
+<h5 id="应用层（Application）"><a href="#应用层（Application）" class="headerlink" title="应用层（Application）"></a>应用层（Application）</h5><p>定义软件要完成的任务，并且指挥表达领域概念的对象来解决问题。这一层所负责的工作对业务来说意义重大，也是与其它系统的应用层进行交互的必要渠道。应用层要尽量简单，不包含业务规则或者知识，而只为下一层中的领域对象协调任务，分配工作，使它们互相协作。它没有反映业务情况的状态，但是却可以具有另外一种状态，为用户或程序显示某个任务的进度。</p>
+<h5 id="领域层（Domain）"><a href="#领域层（Domain）" class="headerlink" title="领域层（Domain）"></a>领域层（Domain）</h5><p>领域层（或模型层），负责表达业务概念，业务状态信息以及业务规则。尽管保存业务状态的技术细节是由基础设施层实现的，但是反映业务情况的状态是由本层控制并且使用的。领域层是业务软件的核心，领域模型位于这一层。</p>
+<h5 id="基础设施层（Infrastructure）"><a href="#基础设施层（Infrastructure）" class="headerlink" title="基础设施层（Infrastructure）"></a>基础设施层（Infrastructure）</h5><p>主要有 2 方面内容，一是为领域模型提供持久化机制，当软件需要持久化能力时候才需要进行规划；一是对其他层提供通用的技术支持能力，如消息通信，通用工具，配置等的实现；</p>
+<h2 id="领域对象"><a href="#领域对象" class="headerlink" title="领域对象"></a>领域对象</h2><h5 id="实体（Entity）"><a href="#实体（Entity）" class="headerlink" title="实体（Entity）"></a>实体（Entity）</h5><p>许多对象不是由它们的属性来定义，而是通过一系列的连续性（continuity）和标识（identity）来从根本上定义的。只要一个对象在生命周期中能够保持连续性，并且独立于它的属性（即使这些属性对系统用户非常重要），那它就是一个实体。</p>
+<h5 id="值对象（Value-Object）"><a href="#值对象（Value-Object）" class="headerlink" title="值对象（Value Object）"></a>值对象（Value Object）</h5><p>当你只关心某个对象的属性时，该对象便可作为一个值对象。为其添加有意义的属性，并赋予它相应的行为。我们需要将值对象看成不变对象，不要给它任何身份标识，还应该尽量避免像实体对象一样的复杂性。</p>
+<h5 id="聚合（Aggregate）"><a href="#聚合（Aggregate）" class="headerlink" title="聚合（Aggregate）"></a>聚合（Aggregate）</h5><p>实体的聚合，拥有聚合根，可为某一个实体实体的聚合，拥有聚合根，可为某一个实体</p>
+<h5 id="服务（Service）"><a href="#服务（Service）" class="headerlink" title="服务（Service）"></a>服务（Service）</h5><p>当领域中的某个操作过程或转换过程不是实体或值对象的职责时，此时我们便成该将该操作放在一个单独的接口中，即领域服务。请确保该领域服务和通用语言是一致的；并且保证它是无状态的。</p>
+<h5 id="事件（Event）"><a href="#事件（Event）" class="headerlink" title="事件（Event）"></a>事件（Event）</h5><p>领域事件是一个领域模型中极其重要的部分，用来表示领域中发生的事件。忽略不相关的领域活动，同时明确领域专家要跟踪或希望被通知的事情，或与其他模型对象中的状态更改相关联。</p>
+<h5 id="仓库（Repository）"><a href="#仓库（Repository）" class="headerlink" title="仓库（Repository）"></a>仓库（Repository）</h5><p>仓库封装了获取对象的逻辑，领域对象无须和底层数据库交互，它只需要从仓库中获取对象即可。仓库可以存储对象的引用，当一个对象被创建后，它可能会被存储到仓库中，那么下次就可以从仓库取。如果用户请求的数据没在仓库中，则会从数据库里取，这就减少了底层交互的次数。</p>
+<h5 id="工厂（Factory）"><a href="#工厂（Factory）" class="headerlink" title="工厂（Factory）"></a>工厂（Factory）</h5><p>实体和聚合通常是很复杂的，这就导致了很难去通过构造器来创建对象。</p>
+<h5 id="模块（Module）"><a href="#模块（Module）" class="headerlink" title="模块（Module）"></a>模块（Module）</h5><p>对于一个复杂的应用来说，领域模型将会变的越来越大，以至于很难去描述和理解，更别提模型之间的关系了。模块的出现，就是为了组织统一的模型概念来达到减少复杂性的目的的。而另一个原因则是模块可以提高代码质量和可维护性，比如我们常说的高内聚，低耦合就是要提倡将相关的类内聚在一起实现模块化。</p>
 
       
     </div>
