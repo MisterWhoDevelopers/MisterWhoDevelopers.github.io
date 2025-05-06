@@ -17,23 +17,28 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>设计模式 | Hexo</title>
-  <meta name="description" content="设计模式 什么是设计模式？ 设计模式是软件设计中的解决方案 用来解决什么问题？">
+  <title>如何在CentOS7下安装ClickHouse | Hexo</title>
+  <meta name="description" content="1. 在官网下载4个依赖包官网地址 1https:&#x2F;&#x2F;packages.clickhouse.com&#x2F;rpm&#x2F;stable&#x2F;   需要下载的包名，如下列表： 1234clickhouse-client-25.4.1.2934.x86_64.rpmclickhouse-common-static-25.4.1.2934.x86_64.rpmclickhouse-common-static-dbg-2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式">
-<meta property="og:url" content="https://misterwhodevelopers.github.io/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:title" content="如何在CentOS7下安装ClickHouse">
+<meta property="og:url" content="https://misterwhodevelopers.github.io/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/index.html">
 <meta property="og:site_name" content="誰先生">
-<meta property="og:description" content="设计模式 什么是设计模式？ 设计模式是软件设计中的解决方案 用来解决什么问题？">
+<meta property="og:description" content="1. 在官网下载4个依赖包官网地址 1https:&#x2F;&#x2F;packages.clickhouse.com&#x2F;rpm&#x2F;stable&#x2F;   需要下载的包名，如下列表： 1234clickhouse-client-25.4.1.2934.x86_64.rpmclickhouse-common-static-25.4.1.2934.x86_64.rpmclickhouse-common-static-dbg-2">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.png">
-<meta property="article:published_time" content="2021-01-06T06:25:37.000Z">
-<meta property="article:modified_time" content="2024-07-19T06:57:23.712Z">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/1.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/2.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/3.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/4.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/5.png">
+<meta property="og:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/6.png">
+<meta property="article:published_time" content="2025-05-06T03:58:36.000Z">
+<meta property="article:modified_time" content="2025-05-06T05:27:03.747Z">
 <meta property="article:author" content="誰先生">
-<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="问题">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://misterwhodevelopers.github.io/images/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.png">
+<meta name="twitter:image" content="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://misterwhodevelopers.github.io/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
+  <link rel="canonical" href="https://misterwhodevelopers.github.io/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/index.html">
   
     <link rel="alternate" href="/atom.xml" title="誰先生" type="application/atom+xml">
   
@@ -342,14 +347,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-设计模式" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-如何在CentOS7下安装ClickHouse" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      设计模式
+      如何在CentOS7下安装ClickHouse
     </h1>
   
 
@@ -357,20 +362,20 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
-	  <time datetime="2021-01-06T06:25:37.000Z" itemprop="datePublished">2021-01-06</time>
+	<a href="/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/" class="article-date">
+	  <time datetime="2025-05-06T03:58:36.000Z" itemprop="datePublished">2025-05-06</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    <a class="article-category-link" href="/categories/%E9%97%AE%E9%A2%98/">问题</a>
   </span>
 
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a>
+	<a class="article-tag-link-link" href="/tags/%E9%97%AE%E9%A2%98/" rel="tag">问题</a>
   </span>
 
 
@@ -378,19 +383,51 @@
 
 	<span class="article-read hidden-xs">
     	<i class="icon icon-eye-fill" aria-hidden="true"></i>
-    	<span id="/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="leancloud_visitors"  data-flag-title="设计模式">0</span>
+    	<span id="/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/" class="leancloud_visitors"  data-flag-title="如何在CentOS7下安装ClickHouse">0</span>
     </span>
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p><img src="https://misterwhodevelopers.github.io/images/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1.png" alt="1"></p>
-<p>什么是设计模式？</p>
-<p>设计模式是软件设计中的解决方案</p>
-<p>用来解决什么问题？</p>
+        <h5 id="1-在官网下载4个依赖包"><a href="#1-在官网下载4个依赖包" class="headerlink" title="1. 在官网下载4个依赖包"></a>1. 在官网下载4个依赖包</h5><p>官网地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://packages.clickhouse.com/rpm/stable/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/1.png" alt="1"></p>
+<p>需要下载的包名，如下列表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">clickhouse-client-25.4.1.2934.x86_64.rpm</span><br><span class="line">clickhouse-common-static-25.4.1.2934.x86_64.rpm</span><br><span class="line">clickhouse-common-static-dbg-25.4.1.2934.x86_64.rpm</span><br><span class="line">clickhouse-server-25.4.1.2934.x86_64.rpm</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/2.png" alt="2"></p>
+<h5 id="2-上传到服务器"><a href="#2-上传到服务器" class="headerlink" title="2. 上传到服务器"></a>2. 上传到服务器</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /opt/clickhouse &amp;&amp; <span class="built_in">cd</span> /opt/clickhouse</span><br></pre></td></tr></table></figure>
+
+<p>将下载好的安装依赖包拖进去</p>
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/3.png" alt="3"></p>
+<h5 id="3-安装"><a href="#3-安装" class="headerlink" title="3. 安装"></a>3. 安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh *.rpm</span><br></pre></td></tr></table></figure>
+
+<p>提示需要输入密码 [可选]，如果不想设置密码直接按回车键 <code>↵</code></p>
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/4.png" alt="4"></p>
+<h5 id="4-启动"><a href="#4-启动" class="headerlink" title="4. 启动"></a>4. 启动</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clickhouse start</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/5.png" alt="5"></p>
+<h5 id="5-登录"><a href="#5-登录" class="headerlink" title="5. 登录"></a>5. 登录</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 无密码</span></span><br><span class="line">clickhouse-client</span><br><span class="line"><span class="comment"># 有密码</span></span><br><span class="line">clickhouse-client --user default --password yourpassword</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://misterwhodevelopers.github.io/images/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/6.png" alt="6"></p>
+<h5 id="6-配置访问-可选"><a href="#6-配置访问-可选" class="headerlink" title="6. 配置访问 [可选]"></a>6. 配置访问 [可选]</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/clickhouse-server/config.xml</span><br></pre></td></tr></table></figure>
+
+<p>搜索配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;listen_host&gt;0.0.0.0&lt;/listen_host&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>去掉注释</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listen_host</span>&gt;</span>0.0.0.0<span class="tag">&lt;/<span class="name">listen_host</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>强制保存</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq!</span><br></pre></td></tr></table></figure>
+
+<p>重启生效</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clickhouse restart</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -400,7 +437,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://misterwhodevelopers.github.io/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="设计模式" target="_blank" rel="external">https://misterwhodevelopers.github.io/2021/01/06/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</a>
+      <a href="https://misterwhodevelopers.github.io/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/" title="如何在CentOS7下安装ClickHouse" target="_blank" rel="external">https://misterwhodevelopers.github.io/2025/05/06/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS7%E4%B8%8B%E5%AE%89%E8%A3%85ClickHouse/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -446,13 +483,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2021/01/08/%E5%A6%82%E4%BD%95%E5%9C%A8MacOS-10-15%E4%B8%8B%E5%AE%89%E8%A3%85Homebrew/" title="如何在MacOS 10.15下安装Homebrew"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2021/01/05/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="第一篇文章"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2024/05/16/MySQL%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD%E4%B8%8E%E6%81%A2%E5%A4%8D/" title="MySQL数据备份与恢复"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
