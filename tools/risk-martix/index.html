@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* blurred backdrop for dialog */
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.35);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* 定义整个滚动条的整体样式，如宽度 */
+    ::-webkit-scrollbar {
+      width: 12px;
+      /* 竖直滚动条宽度 */
+      height: 12px;
+      /* 水平滚动条高度 */
+    }
+
+    /* 滚动条上的滑块 */
+    ::-webkit-scrollbar-thumb {
+      background-color: oklch(0.9964 0.0067 97.35);
+      /* 滑块颜色 */
+      border-radius: 6px;
+      /* 滑块圆角 */
+    }
+
+    /* 滑块在悬停时的状态 */
+    ::-webkit-scrollbar-thumb:hover {
+      cursor: grab;
+      /* 悬停时颜色变深 */
+    }
+
+    /* 滚动条的轨道 */
+    ::-webkit-scrollbar-track {
+      background-color: oklch(0.3863 0.033 175.14);
+      /* 轨道背景色 */
+      border-radius: 6px;
+    }
+  </style>
+  <title>风险矩阵管理器</title>
+</head>
+
+<body class="bg-[oklch(0.7099_0.0594_258.35)] min-h-screen p-4">
+  <div>
+    <div>
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-[oklch(0.9964_0.0067_97.35)] mb-2">风险矩阵管理器</h1>
+        <p class="text-base text-[oklch(0.9964_0.0067_97.35_/_0.8)]">自定义矩阵尺寸，生成风险评估矩阵</p>
+      </div>
+      <div>
+        <div id="config" class="shadow-sm m-4 bg-[oklch(0.3863_0.033_175.14)] rounded-lg p-6">
+          <div class="text-center">
+            <h3 class="text-xl font-semibold text-[oklch(0.9964_0.0067_97.35)] mb-2">配置矩阵尺寸</h3>
+            <p class="text-sm text-[oklch(0.9964_0.0067_97.35_/_0.8)]">设置矩阵的宽度（列数）和高度（行数）</p>
+          </div>
+          <div>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-md text-[oklch(0.9964_0.0067_97.35)]" for="columns">宽度（列数）</label>
+              </div>
+              <input
+                class="w-full bg-[oklch(0.3388_0.0371_173.76_/_0.8)] px-4 py-2 text-base text-[oklch(0.9964_0.0067_97.35)] placeholder-gray-500 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.9964_0.0067_97.35)] focus:border-transparent focus:animate-pulse focus:shadow-sm focus:shadow-[oklch(0.9964_0.0067_97.35)] transition duration-75 ease-in-out mb-2"
+                type="number" name="columns" id="columns" placeholder="请输入列数" value="2" min="2" max="10">
+              <p class="text-[oklch(0.9964_0.0067_97.35_/_0.8)]">推荐值：2-10</p>
+            </div>
+            <div>
+              <label class="block text-md text-[oklch(0.9964_0.0067_97.35)] mb-2" for="rows">高度（行数）</label>
+              <input
+                class="w-full bg-[oklch(0.3388_0.0371_173.76_/_0.8)] px-4 py-2 text-base text-[oklch(0.9964_0.0067_97.35)] placeholder-gray-500 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[oklch(0.9964_0.0067_97.35)] focus:border-transparent focus:animate-pulse focus:shadow-sm focus:shadow-[oklch(0.9964_0.0067_97.35)] transition duration-75 ease-in-out mb-2"
+                type="number" name="rows" id="rows" placeholder="请输入行数" value="2" min="2" max="10">
+              <p class="text-[oklch(0.9964_0.0067_97.35_/_0.8)]">推荐值：2-10</p>
+            </div>
+            <div class="bg-[oklch(0.3388_0.0371_173.76_/_0.8)] rounded-lg p-3 mb-4 mt-4">
+              <div class="text-sm">
+                <p class="text-[oklch(0.9964_0.0067_97.35)] inline" id="current-config">当前配置：2 列 × 2 行 =
+                  4 个格子</p>
+              </div>
+            </div>
+            <button id="generate-btn" type="button"
+              class="w-full bg-[oklch(0.3388_0.0371_173.76)] hover:bg-[oklch(0.3388_0.0371_173.76_/_0.8)] text-[oklch(0.9964_0.0067_97.35)] font-bold py-2 px-4 rounded transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[oklch(0.9964_0.0067_97.35)] focus:ring-opacity-50 mt-6">
+              生 成 矩 阵
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Matrix view (route: #/matrix) -->
+  <div id="matrix-section" class="hidden">
+    <header>
+      <div>
+        <div class="text-center mb-8">
+          <h1 class="text-3xl font-bold text-[oklch(0.9964_0.0067_97.35)] mb-2">风险矩阵管理器</h1>
+          <p class="text-base text-[oklch(0.9964_0.0067_97.35_/_0.8)]">点击格子查看详情</p>
+        </div>
+      </div>
+    </header>
+    <div class="shadow-sm m-4 bg-[oklch(0.3863_0.033_175.14)] rounded-lg p-6">
+      <div class="relative flex items-center justify-center mb-4">
+        <div class="absolute left-0">
+          <button id="back-btn" type="button"
+            class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76_/_0.8)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">返
+            回</button>
+        </div>
+        <h3 class="text-xl font-semibold text-[oklch(0.9964_0.0067_97.35)] text-center">矩阵生成结果</h3>
+        <div class="absolute right-0">
+          <button id="expand-all-btn" type="button"
+            class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">全
+            部 翻
+            开</button>
+        </div>
+      </div>
+      <div id="matrix-container" class="p-2 bg-[oklch(0.9964_0.0067_97.35)] rounded"></div>
+    </div>
+  </div>
+
+  <script>
+    function clampNumber(v, min) {
+      v = parseInt(v, 10);
+      if (isNaN(v)) return min;
+      return Math.max(min, v);
+    }
+
+    function saveMartixExpanded(state) {
+      try {
+        localStorage.setItem('matrixExpanded', state);
+      } catch (e) {
+        console.error('saveMatrixState error', e);
+      }
+    }
+    function loadMatrixExpanded() {
+      try {
+        const expanded = localStorage.getItem('matrixExpanded');
+        if (!expanded) return false;
+        return expanded;
+      } catch (e) {
+        console.error('loadMatrixState error', e);
+        return false;
+      }
+    }
+
+    // 矩阵状态管理
+    const STORAGE_KEY = 'riskMatrixState_v1';
+    function saveMatrixState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        console.error('saveMatrixState error', e);
+      }
+    }
+    function loadMatrixState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return [];
+        const parsed = JSON.parse(raw);
+        return parsed || [];
+      } catch (e) {
+        console.error('loadMatrixState error', e);
+        return [];
+      }
+    }
+
+    // 输入部分
+    const colsInput = document.getElementById('columns');
+    const rowsInput = document.getElementById('rows');
+    const currentConfig = document.getElementById('current-config');
+    function updateConfigText() {
+      const c = clampNumber(colsInput.value, 2);
+      const r = clampNumber(rowsInput.value, 2);
+      currentConfig.textContent = `当前配置：${c} 列 × ${r} 行 = ${c * r} 个格子`;
+    }
+    colsInput.addEventListener('input', updateConfigText);
+    colsInput.addEventListener('change', () => {
+      if (colsInput.value < 2) colsInput.value = 2;
+      if (colsInput.value > 10) colsInput.value = 10;
+      updateConfigText();
+    });
+    rowsInput.addEventListener('input', updateConfigText);
+    rowsInput.addEventListener('change', () => {
+      if (rowsInput.value < 2) rowsInput.value = 2;
+      if (rowsInput.value > 10) rowsInput.value = 10;
+      updateConfigText();
+    });
+
+    // 返回按钮部分
+    const backBtn = document.getElementById('back-btn');
+    backBtn.addEventListener('click', () => { location.hash = '#/'; });
+
+    // 全部展开按钮部分
+    const expandAllBtn = document.getElementById('expand-all-btn');
+    function setAllExpanded(state) {
+      saveMartixExpanded(state);
+      let matrixState = loadMatrixState();
+      for (let row = 0; row < matrixState.length; row++) {
+        for (let col = 0; col < matrixState[row].length; col++) {
+          if (!matrixState[row][col]) matrixState[row][col] = {};
+          matrixState[row][col].opened = state;
+        }
+      }
+      saveMatrixState(matrixState);
+      renderMatrix();
+    }
+    expandAllBtn.addEventListener('click', () => {
+      expandAllBtn.textContent = expandAllBtn.textContent === '全部收起' ? '全部翻开' : '全部收起';
+      setAllExpanded(expandAllBtn.textContent === '全部收起' ? true : false);
+    })
+
+    // dialog 部分
+    function showCellDialog(row, col, state, matrixState) {
+      const dialog = document.createElement('dialog');
+      dialog.className = 'focus:outline-none rounded-lg p-6 shadow-xl max-w-sm w-full';
+      dialog.style.background = state.bg || 'oklch(0.9964_0.0067_97.35)';
+      dialog.innerHTML = `
+      <div id="dialog-content" class="text-[oklch(0.9964_0.0067_97.35)] max-h-96 overflow-hidden flex flex-col">
+        <div class="flex-shrink-0">
+          <div class="text-lg font-semibold mb-2">卡片详情</div>
+          <div class="mt-4 mb-4 text-center font-bold">风险比例：${state.percent}%</div>
+          <label class="block text-sm mb-1" for="risk-name-input">风险名称</label>
+        </div>
+        
+        <div id="items-container" class="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 scrollbar-thumb-rounded space-y-2 mb-2"></div>
+        
+        <div class="flex-shrink-0">
+          <button id="add-item-btn" type="button" class="w-full border-2 focus:outline-none border-dashed border-[oklch(0.9964_0.0067_97.35)] rounded-md py-2 flex items-center justify-center hover:border-[oklch(0.9964_0.0067_97.35_/_0.6)] transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="mr-2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            添加一项
+          </button>
+        </div>
+      </div>
+      `;
+      document.body.appendChild(dialog);
+      dialog.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-30deg)';
+      dialog.style.opacity = '0.5';
+      dialog.showModal();
+      setTimeout(() => {
+        dialog.style.transition = 'transform 0.5s cubic-bezier(.22,1.5,.36,1), opacity 0.5s';
+        dialog.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        dialog.style.opacity = '1';
+      }, 10);
+
+
+      // 项目部分
+      const itemsContainer = dialog.querySelector('#items-container');
+      const addItemBtn = dialog.querySelector('#add-item-btn');
+      function createItemField(value = '') {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <div class="flex items-center gap-2 p-2">
+            <input class="risk-name-input flex-1 bg-transparent placeholder-[oklch(0.9964_0.0067_97.35)] focus:outline-none focus:ring-1 focus:ring-[oklch(0.9964_0.0067_97.35)] focus:border-transparent transition duration-75 focus:animate-pulse focus:shadow-sm focus:shadow-[oklch(0.9964_0.0067_97.35)] px-3 py-2 border-2 border-[oklch(0.9964_0.0067_97.35)] rounded" placeholder="请输入风险名称" value="${value ? value.replace(/"/g, '&quot;') : ''}">
+            <button type="button" title="删除" aria-label="删除此项" class="risk-remove-btn text-red-500 hover:text-red-700 bg-[oklch(0.9964_0.0067_97.35)] p-3 rounded-sm focus:outline-none focus:ring-2 focus:ring-red-300 shadow-sm hover:shadow-md transition-all duration-200 flex-shrink-0" style="border:none;line-height:1;">
+              <!-- trash icon with white background -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+                <path d="M10 11v6"></path>
+                <path d="M14 11v6"></path>
+              </svg>
+            </button>
+          </div>
+          `;
+        // wire up remove button logic for this field only
+        const input = wrapper.querySelector('.risk-name-input');
+        const removeBtn = wrapper.querySelector('.risk-remove-btn');
+        // (removed clear button and related logic as it's overengineered)
+        if (removeBtn) {
+          removeBtn.addEventListener('click', () => {
+            // remember siblings for focus behavior
+            const nextSibling = wrapper.nextElementSibling;
+            const prevSibling = wrapper.previousElementSibling;
+            // remove the wrapper
+            try { wrapper.remove(); } catch (e) { /* ignore */ }
+            // if no fields remain, add one empty field
+            if (itemsContainer.children.length === 0) {
+              const newEl = createItemField('');
+              itemsContainer.appendChild(newEl);
+              const newInp = newEl.querySelector('input');
+              if (newInp) newInp.focus();
+              return;
+            }
+            // otherwise focus next or previous
+            const target = nextSibling || prevSibling || itemsContainer.firstElementChild;
+            if (target) {
+              const targetInput = target.querySelector('input');
+              if (targetInput) targetInput.focus();
+            }
+          });
+        }
+        return wrapper;
+      }
+      addItemBtn.addEventListener('click', () => {
+        if (itemsContainer.children.length >= 5) {
+          alert('最多只能添加 5 项风险名称');
+          return;
+        }
+        const el = createItemField('');
+        itemsContainer.appendChild(el);
+        // focus newly added input
+        const inp = el.querySelector('input');
+        if (inp) inp.focus();
+      });
+      if (state && Array.isArray(state.items) && state.items.length > 0) {
+        state.items.forEach(it => itemsContainer.appendChild(createItemField(it)));
+      } else {
+        // start with one empty field by default
+        itemsContainer.appendChild(createItemField(''));
+      }
+
+      // 按钮容器
+      const btnContainer = document.createElement('div');
+      btnContainer.style.position = 'absolute';
+      btnContainer.style.left = '50%';
+      btnContainer.style.transform = 'translateX(-50%)';
+      btnContainer.style.display = 'flex';
+      btnContainer.style.gap = '8px';
+      btnContainer.style.zIndex = 9999;
+
+      // 收回卡片按钮
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'bg-[oklch(0.3863_0.033_175.14)] hover:bg-[oklch(0.3388_0.0371_173.76)] text-white py-2 rounded shadow flex-1';
+      closeBtn.textContent = '收回卡片';
+      closeBtn.style.flex = '1';
+
+      closeBtn.onclick = () => {
+        try {
+          matrixState[row - 1][col - 1].opened = false;
+          saveMatrixState(matrixState);
+          renderMatrix();
+        } catch (e) {
+          console.error('收回卡片失败', e);
+        } finally {
+          try { dialog.close(); cleanupClose(); } catch (e) { /* ignore */ }
+        }
+      }
+
+      btnContainer.appendChild(closeBtn);
+
+      // 保存按钮
+      const saveBtn = document.createElement('button');
+      saveBtn.className = 'bg-[oklch(0.679_0.1784_144.4)] hover:bg-[oklch(0.5575_0.1309_153)] text-[oklch(0.9683_0.0102_81.8)] py-2 rounded shadow flex-1';
+      saveBtn.textContent = '保存';
+      saveBtn.style.flex = '1';
+      function saveHandler() {
+        const inputs = Array.from(itemsContainer.querySelectorAll('input'));
+        const items = inputs.map(i => i.value.trim()).filter(v => v.length > 0);
+        matrixState[row - 1][col - 1] = {
+          opened: true,
+          bg: state.bg,
+          percent: state.percent,
+          items,
+        };
+        saveMatrixState(matrixState);
+      }
+
+      function cleanupClose() {
+        try { closeBtn.remove(); dialog.remove(); } catch (e) { }
+      }
+
+      saveBtn.onclick = () => {
+        saveHandler();
+        dialog.close();
+        cleanupClose();
+        renderMatrix();
+      };
+
+      btnContainer.appendChild(saveBtn);
+
+      dialog.appendChild(btnContainer);
+
+      dialog.style.overflow = 'visible';
+      dialog.style.position = dialog.style.position || 'relative';
+
+      requestAnimationFrame(() => {
+        const gap = 10;
+        const btnH = btnContainer.offsetHeight || 40;
+        btnContainer.style.bottom = `-${btnH + gap}px`;
+        btnContainer.className = 'w-full'
+      });
+    }
+
+    // 矩阵渲染部分
+    const matrixContainer = document.getElementById('matrix-container');
+    function renderMatrix() {
+      let matrixState = loadMatrixState();
+      let c = matrixState[matrixState.length - 1].length;
+      let r = matrixState.length;
+      matrixContainer.innerHTML = '';
+      const grid = document.createElement('div');
+      grid.className = 'grid gap-2';
+      grid.style.gridTemplateColumns = `repeat(${c}, minmax(0, 1fr))`;
+
+      for (let row = r; row > 0; row--) {
+        for (let col = 1; col <= c; col++) {
+          const cell = document.createElement('div');
+          cell.dataset.row = String(row);
+          cell.dataset.col = String(col);
+          const textColor = 'oklch(0.9964 0.0067 97.35)';
+          cell.className = 'p-3 rounded-lg shadow-sm flex flex-col items-center justify-center h-28 cursor-pointer transition transform hover:-translate-y-1 shadow-lg min-w-xs min-h-xs';
+          const saved = matrixState[row - 1][col - 1]
+          cell.dataset.bg = saved.bg;
+          cell.dataset.text = textColor;
+          cell.style.background = 'oklch(0.9964 0.0067 97.35)';
+          cell.style.color = textColor;
+          cell.style.transition = 'background 250ms ease, color 250ms ease, transform 150ms ease, box-shadow 150ms ease';
+          cell.innerHTML = `
+            <div class="card-back hidden text-center text-[${cell.style.color}] mt-2">
+              <div class="${c > 4 ? 'text-xs' : 'text-sm'} font-semibold">
+                ${saved.items.length > 0 ? saved.items.map(item => `<div>${item}</div>`).join('') : '无'}
+              </div>
+              <div class="${r > 4 ? 'text-sm' : 'text-md'} font-semibold c mt-1 text-[${cell.style.color}]">风险比例：${saved.percent}%</div>
+            </div>
+          `;
+          if (saved && saved.opened) {
+            const backEl = cell.querySelector('.card-back');
+            if (backEl) backEl.classList.remove('hidden');
+            // apply background and text color for opened state
+            cell.style.background = saved.bg;
+            if (cell.dataset.text) cell.style.color = cell.dataset.text;
+            cell.querySelectorAll('*').forEach(el => { el.style.color = cell.dataset.text; });
+          }
+          cell.addEventListener('click', () => {
+            // pass current cell bg into dialog so it can be used as initial bg
+            showCellDialog(row, col, saved, matrixState);
+          });
+          grid.appendChild(cell);
+        }
+      }
+      matrixContainer.appendChild(grid);
+    }
+
+    // 路由部分
+    const matrixSection = document.getElementById('matrix-section');
+    function showRoute() {
+      const hash = (location.hash || '#/').replace(/^#/, '');
+      if (hash === '/matrix' || hash === 'matrix') {
+        // show matrix
+        document.querySelector('.text-center.mb-8')?.classList.add('hidden');
+        document.querySelector('#config')?.classList.add('hidden');
+        matrixSection.classList.remove('hidden');
+        renderMatrix();
+      } else {
+        // show home
+        document.querySelector('.text-center.mb-8')?.classList.remove('hidden');
+        document.querySelector('#config')?.classList.remove('hidden');
+        matrixSection.classList.add('hidden');
+      }
+    }
+    window.addEventListener('hashchange', showRoute);
+    window.addEventListener('DOMContentLoaded', () => { updateConfigText(); showRoute(); });
+
+    const generateBtn = document.getElementById('generate-btn');
+    generateBtn.addEventListener('click', () => {
+      updateConfigText();
+      try {
+        // 初始化矩阵状态
+        let matrixState = [];
+        const c = clampNumber(colsInput.value, 2);
+        const r = clampNumber(rowsInput.value, 2);
+        function interpAngle(a, b, t) {
+          // shortest-path interpolation for angles (degrees)
+          let diff = ((b - a + 540) % 360) - 180;
+          return (a + diff * t + 360) % 360;
+        }
+        const TL = [0.5056, 0.073, 138.94];
+        const TR = [0.704, 0.1418, 99.01];
+        const BL = [0.704, 0.1418, 99.01];
+        const BR = [0.5319, 0.1667, 31.68];
+        function computeOKLCH(rowIdx, colIdx, maxRow, maxCol) {
+          const tx = (maxCol === 1) ? 0 : (colIdx - 1) / (maxCol - 1);
+          const ty = (maxRow === 1) ? 0 : (rowIdx - 1) / (maxRow - 1);
+          // bilinear interpolation for L and C
+          function bilinear(values) {
+            const tl = values[0], tr = values[1], bl = values[2], br = values[3];
+            const top = tl * (1 - tx) + tr * tx;
+            const bottom = bl * (1 - tx) + br * tx;
+            return top * (1 - ty) + bottom * ty;
+          }
+          const L = bilinear([TL[0], TR[0], BL[0], BR[0]]);
+          const C = bilinear([TL[1], TR[1], BL[1], BR[1]]);
+          // for H do bilinear with angular interp on edges
+          const topH = interpAngle(TL[2], TR[2], tx);
+          const bottomH = interpAngle(BL[2], BR[2], tx);
+          const H = interpAngle(topH, bottomH, ty);
+          return { L, C, H };
+        }
+        function computePercent(rowIdx, colIdx, maxRow, maxCol) {
+          if (rowIdx === 1 && colIdx === 1) return 0;
+          if ((rowIdx === 1 && colIdx === maxCol) || (rowIdx === maxRow && colIdx === 1)) return 50;
+          if (rowIdx === maxRow && colIdx === maxCol) return 100;
+          return Math.round(((rowIdx - 1) / (maxRow - 1) + (colIdx - 1) / (maxCol - 1)) * 50);
+        }
+        for (let row = r; row > 0; row--) {
+          for (let col = 1; col <= c; col++) {
+            const computedPercent = computePercent(row, col, r, c);
+            const color = computeOKLCH(row, col, r, c);
+            const computedBg = `oklch(${color.L.toFixed(4)} ${color.C.toFixed(4)} ${color.H.toFixed(2)})`;
+            if (!matrixState[row - 1]) {
+              matrixState[row - 1] = [];
+            }
+            matrixState[row - 1][col - 1] = { percent: computedPercent, bg: computedBg, items: [], opened: false };
+          }
+        }
+        saveMatrixState(matrixState);
+      } catch (e) {
+        console.error('failed to reset matrix state on generate', e);
+      }
+      try { setAllExpanded(false); } catch (e) { /* ignore if not available yet */ }
+      location.hash = '#/matrix';
+    });
+  </script>
+</body>
+
+</html>
