@@ -105,21 +105,25 @@
       </div>
     </header>
     <div class="shadow-sm m-4 bg-[oklch(0.3863_0.033_175.14)] rounded-lg p-6">
-      <div class="relative flex items-center justify-center mb-4">
-        <div class="absolute left-0">
-          <button id="back-btn" type="button"
-            class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76_/_0.8)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">返
-            回</button>
+        <div class="relative flex items-center justify-center mb-4">
+          <div class="absolute left-0">
+            <button id="back-btn" type="button"
+              class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76_/_0.8)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">返
+              回</button>
+          </div>
+          <h3 class="text-xl font-semibold text-[oklch(0.9964_0.0067_97.35)] text-center">矩阵生成结果</h3>
+          <div class="absolute right-0 flex gap-2">
+            <button id="expand-all-btn" type="button"
+              class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">全
+              部 翻
+              开</button>
+            <button id="total-risk-btn" type="button"
+              class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">总
+              体
+              风 险</button>
+          </div>
         </div>
-        <h3 class="text-xl font-semibold text-[oklch(0.9964_0.0067_97.35)] text-center">矩阵生成结果</h3>
-        <div class="absolute right-0">
-          <button id="expand-all-btn" type="button"
-            class="px-3 py-2 bg-[oklch(0.3388_0.0371_173.76)] text-[oklch(0.9964_0.0067_97.35)] rounded font-bold">全
-            部 翻
-            开</button>
-        </div>
-      </div>
-      <div id="matrix-container" class="p-2 bg-[oklch(0.9964_0.0067_97.35)] rounded"></div>
+        <div id="matrix-container" class="p-2 bg-[oklch(0.9964_0.0067_97.35)] rounded"></div>
     </div>
   </div>
 
@@ -194,6 +198,166 @@
     // 返回按钮部分
     const backBtn = document.getElementById('back-btn');
     backBtn.addEventListener('click', () => { location.hash = '#/'; });
+
+    // 计算总体风险
+    function calculateTotalRisk() {
+      const matrixState = loadMatrixState();
+      let noRiskProb = 1.0; // 没有任何风险发生的概率，初始化为1
+      
+      // 遍历所有风险
+      for (let row = 0; row < matrixState.length; row++) {
+        for (let col = 0; col < matrixState[row].length; col++) {
+          const risk = matrixState[row][col];
+          if (risk && risk.items && risk.items.length > 0) {
+            for (let i = 0; i < risk.items.length; i++) {
+              // 风险百分比转换为小数
+              const p = risk.percent / 100;
+              // 计算至少一个风险发生的概率并相乘
+              noRiskProb *= (1 - p);
+            }
+          }
+        }
+      }
+      
+      // 至少一个风险发生的概率 = 1 - 无任何风险
+      const atLeastOneRisk = 1 - noRiskProb;
+      
+      // 将概率转换为百分比并四舍五入
+      const totalRiskPercent = Math.round(atLeastOneRisk * 100);
+      const noRiskPercent = Math.floor(noRiskProb * 100);
+      
+      // 返回一个包含总体风险和无风险概率的对象
+      return {
+        totalRiskPercent: totalRiskPercent,
+        noRiskPercent: noRiskPercent,
+        noRiskProbability: noRiskProb // 保留小数形式的无风险概率，用于显示计算过程
+      };
+    }
+
+    // 计算总体风险窗口的颜色
+    function calculateTotalRiskColor(totalPercent) {
+      // 与卡片颜色逻辑一致，根据百分比计算颜色
+      const r = 2; // 行数固定为2
+      const c = 2; // 列数固定为2
+      
+      // 根据百分比确定在2x2矩阵中的位置
+      let rowIdx, colIdx;
+      if (totalPercent === 0) {
+        rowIdx = 1;
+        colIdx = 1;
+      } else if (totalPercent <= 50) {
+        if (totalPercent <= 25) {
+          rowIdx = 1;
+          colIdx = 2;
+        } else {
+          rowIdx = 2;
+          colIdx = 1;
+        }
+      } else if (totalPercent <= 75) {
+        rowIdx = 2;
+        colIdx = 2;
+      } else {
+        rowIdx = 2;
+        colIdx = 2;
+      }
+      
+      // 使用computeOKLCH函数计算颜色
+      const TL = [0.5056, 0.073, 138.94];
+      const TR = [0.704, 0.1418, 99.01];
+      const BL = [0.704, 0.1418, 99.01];
+      const BR = [0.5319, 0.1667, 31.68];
+      
+      function interpAngle(a, b, t) {
+        let diff = ((b - a + 540) % 360) - 180;
+        return (a + diff * t + 360) % 360;
+      }
+      
+      function bilinear(values) {
+        const tl = values[0], tr = values[1], bl = values[2], br = values[3];
+        const top = tl * (1 - 0.5) + tr * 0.5;
+        const bottom = bl * (1 - 0.5) + br * 0.5;
+        return top * (1 - 0.5) + bottom * 0.5;
+      }
+      
+      // 对于2x2矩阵，百分比对应位置的t值计算
+      let tx, ty;
+      if (rowIdx === 1 && colIdx === 1) {
+        tx = 0;
+        ty = 0;
+      } else if (rowIdx === 1 && colIdx === 2) {
+        tx = 1;
+        ty = 0;
+      } else if (rowIdx === 2 && colIdx === 1) {
+        tx = 0;
+        ty = 1;
+      } else { // (rowIdx === 2 && colIdx === 2)
+        tx = 1;
+        ty = 1;
+      }
+      
+      const L = bilinear([TL[0], TR[0], BL[0], BR[0]]);
+      const C = bilinear([TL[1], TR[1], BL[1], BR[1]]);
+      const topH = interpAngle(TL[2], TR[2], tx);
+      const bottomH = interpAngle(BL[2], BR[2], tx);
+      const H = interpAngle(topH, bottomH, ty);
+      
+      return `oklch(${L.toFixed(4)} ${C.toFixed(4)} ${H.toFixed(2)})`;
+    }
+
+    // 显示总体风险窗口
+    function showTotalRiskDialog() {
+      const riskData = calculateTotalRisk();
+      const totalRiskPercent = riskData.totalRiskPercent;
+      const noRiskPercent = riskData.noRiskPercent;
+      const bgColor = calculateTotalRiskColor(totalRiskPercent);
+      
+      const dialog = document.createElement('dialog');
+      dialog.className = 'focus:outline-none rounded-lg p-6 shadow-xl max-w-sm w-full';
+      dialog.style.background = bgColor;
+      
+      dialog.innerHTML = `
+        <div id="dialog-content" class="text-[oklch(0.9964_0.0067_97.35)] max-h-96 overflow-hidden flex flex-col items-center justify-center text-center p-4">
+          <div class="text-lg font-semibold mb-4">总体风险</div>
+          <div class="text-sm">至少一个风险发生的概率</div>
+          <div class="mt-4 mb-4 text-4xl font-bold">${totalRiskPercent}%</div>
+          
+          <div class="text-sm">所有风险都不发生的概率</div>
+          <div class="mt-4 mb-4 text-4xl font-bold">${noRiskPercent}%</div>
+        </div>
+      `;
+      
+      document.body.appendChild(dialog);
+      
+      // 添加动画效果
+      dialog.style.transform = 'perspective(1000px) rotateX(30deg) rotateY(-30deg)';
+      dialog.style.opacity = '0.5';
+      dialog.showModal();
+      
+      setTimeout(() => {
+        dialog.style.transition = 'transform 0.5s cubic-bezier(.22,1.5,.36,1), opacity 0.5s';
+        dialog.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        dialog.style.opacity = '1';
+      }, 10);
+      
+      // 关闭按钮
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'bg-[oklch(0.3863_0.033_175.14)] hover:bg-[oklch(0.3388_0.0371_173.76)] text-white py-2 px-4 rounded shadow mt-4';
+      closeBtn.textContent = '关 闭';
+      
+      closeBtn.onclick = () => {
+        try { dialog.close(); dialog.remove(); } catch (e) { /* ignore */ }
+      };
+      
+      // 添加按钮
+      const btnContainer = document.createElement('div');
+      btnContainer.className = 'flex justify-center mt-4';
+      btnContainer.appendChild(closeBtn);
+      dialog.appendChild(btnContainer);
+    }
+
+    // 总体风险按钮事件
+    const totalRiskBtn = document.getElementById('total-risk-btn');
+    totalRiskBtn.addEventListener('click', showTotalRiskDialog);
 
     // 全部展开按钮部分
     const expandAllBtn = document.getElementById('expand-all-btn');
