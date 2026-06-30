@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商业模式画布 · 九宫格 | 商业模式新生代</title>
+    <style>
+        :root {
+            --bg: #f5f3f0;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(145deg, #f4f1ed 0%, #f9f7f4 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 28px 18px;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 920px;
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.06);
+            padding: 38px 30px 30px;
+            border: 1px solid #e7e3de;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+        .book-icon {
+            font-size: 32px;
+            background: #fef9e7;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .header .subtitle {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+            background: #f1f5f9;
+            padding: 5px 14px;
+            border-radius: 30px;
+        }
+
+        .zone-legend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+        .zone-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #475569;
+            letter-spacing: 0.3px;
+        }
+        .zone-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+        .zone-badge.revenue {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1.5px solid #fcd34d;
+        }
+        .zone-badge.support {
+            background: #f1f5f9;
+            color: #334155;
+            border: 1.5px solid #cbd5e1;
+        }
+
+        .canvas-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 18px;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: default;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #94a3b8;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            margin-top: 10px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 16px;
+        }
+        .footer strong {
+            color: #475569;
+            font-weight: 700;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 20px 12px 16px; }
+            .header h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="book-icon">📘</div>
+            <div>
+                <h1>商业模式画布</h1>
+                <span class="subtitle">Business Model Canvas · 九大构造块</span>
+            </div>
+        </div>
+
+        <div class="zone-legend">
+            <span class="zone-legend-item">
+                <span class="zone-badge revenue">💰 价值创造与获取</span> 前5格 · 教人怎么赚钱
+            </span>
+            <span class="zone-legend-item">
+                <span class="zone-badge support">🔧 运营支撑</span> 后4格 · 支撑赚钱能力
+            </span>
+        </div>
+
+        <div class="canvas-wrapper" id="canvasWrapper">
+            <canvas id="bmcCanvas"></canvas>
+        </div>
+
+        <div class="footer">
+            📘 亚历山大·奥斯特瓦德 & 伊夫·皮尼厄 · <strong>《商业模式新生代》</strong> — 商业模式画布九大构造块
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const canvas = document.getElementById('bmcCanvas');
+            const ctx = canvas.getContext('2d');
+            const wrapper = document.getElementById('canvasWrapper');
+
+            const GAP = 14;
+            const OUTLINE_PADDING = 5;
+            const CANVAS_PADDING = 8;
+            const CARD_SCALE = 0.95; // 微缩5%，为右侧轮廓线留出空间
+            const CORNER_RADIUS = 14;
+            const OUTLINE_RADIUS = 12;
+            const INNER_RADIUS = 7;
+            const DPR = window.devicePixelRatio || 1;
+
+            const cards = [
+                { id: 1, title: '客户细分', desc: '明确服务哪些客户群体，了解他们的需求和痛点', icon: '👥', category: '客户', zone: 'customer', revenue: true },
+                { id: 2, title: '价值主张', desc: '为客户提供独特的价值，解决他们的核心问题', icon: '💎', category: '价值', zone: 'value', revenue: true },
+                { id: 3, title: '渠道通路', desc: '通过哪些渠道触达客户，传递价值主张', icon: '🛒', category: '客户', zone: 'customer', revenue: true },
+                { id: 4, title: '客户关系', desc: '与客户建立和维护何种关系以促进长期合作', icon: '💬', category: '客户', zone: 'customer', revenue: true },
+                { id: 5, title: '收入来源', desc: '通过为客户提供价值获得收入的方式', icon: '💰', category: '财务', zone: 'finance', revenue: true },
+                { id: 6, title: '核心资源', desc: '实现价值主张所需的关键资源', icon: '🏗️', category: '运营', zone: 'infra', revenue: false },
+                { id: 7, title: '关键业务', desc: '为实现价值主张而必须执行的核心业务活动', icon: '⚙️', category: '运营', zone: 'infra', revenue: false },
+                { id: 8, title: '重要合作伙伴', desc: '与外部伙伴合作优化资源与能力', icon: '🤝', category: '伙伴', zone: 'partner', revenue: false },
+                { id: 9, title: '成本结构', desc: '运营商业模式所产生的各项成本构成', icon: '📉', category: '财务', zone: 'finance', revenue: false },
+            ];
+
+            const zoneColors = {
+                customer: { bg: '#f8faff', border: '#dbeafe', hoverBg: '#f0f6ff', hoverBorder: '#bfdbfe', badgeBg: '#dbeafe', badgeText: '#1e40af' },
+                value: { bg: '#fffdf5', border: '#fef3c7', hoverBg: '#fffbeb', hoverBorder: '#fde68a', badgeBg: '#fef3c7', badgeText: '#92400e' },
+                infra: { bg: '#f8fafc', border: '#e2e8f0', hoverBg: '#f1f5f9', hoverBorder: '#cbd5e1', badgeBg: '#e2e8f0', badgeText: '#334155' },
+                finance: { bg: '#f5fdf7', border: '#d1fae5', hoverBg: '#ecfdf5', hoverBorder: '#a7f3d0', badgeBg: '#d1fae5', badgeText: '#14532d' },
+                partner: { bg: '#fbf9ff', border: '#ede9fe', hoverBg: '#f5f3ff', hoverBorder: '#ddd6fe', badgeBg: '#ede9fe', badgeText: '#5b21b6' },
+            };
+            const revenueColors = { bg: '#fffdf5', border: '#fde68a', hoverBg: '#fffbeb', hoverBorder: '#fcd34d' };
+
+            let gridLayout = null;
+            let hoveredIndex = -1;
+
+            function getCardZone(card) {
+                if (card.revenue) {
+                    return {
+                        bg: revenueColors.bg,
+                        border: revenueColors.border,
+                        hoverBg: revenueColors.hoverBg,
+                        hoverBorder: revenueColors.hoverBorder,
+                        badgeBg: zoneColors[card.zone].badgeBg,
+                        badgeText: zoneColors[card.zone].badgeText,
+                    };
+                }
+                return zoneColors[card.zone];
+            }
+
+            function computeLayout() {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const displayWidth = wrapperRect.width;
+                const displayHeight = Math.max(displayWidth * 0.72, 420);
+                const padding = CANVAS_PADDING;
+                const availableWidth = displayWidth - padding * 2;
+                const availableHeight = displayHeight - padding * 2;
+                const cellW = (availableWidth - GAP * 2) / 3;
+                const cellH = (availableHeight - GAP * 2) / 3;
+                const startX = padding;
+                const startY = padding;
+                return { w: displayWidth, h: displayHeight, cellW, cellH, startX, startY, padding };
+            }
+
+            function getCellRect(index, layout) {
+                const col = index % 3;
+                const row = Math.floor(index / 3);
+                const x = layout.startX + col * (layout.cellW + GAP);
+                const y = layout.startY + row * (layout.cellH + GAP);
+                return { x, y, w: layout.cellW, h: layout.cellH, col, row };
+            }
+
+            function render() {
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const displayWidth = wrapperRect.width;
+                const displayHeight = Math.max(displayWidth * 0.72, 420);
+
+                canvas.width = displayWidth * DPR;
+                canvas.height = displayHeight * DPR;
+                canvas.style.width = displayWidth + 'px';
+                canvas.style.height = displayHeight + 'px';
+
+                ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+
+                const layout = computeLayout();
+                gridLayout = layout;
+
+                ctx.clearRect(0, 0, displayWidth, displayHeight);
+
+                cards.forEach((card, index) => {
+                    const rect = getCellRect(index, layout);
+                    const colors = getCardZone(card);
+                    const isHovered = index === hoveredIndex;
+
+                    const actualW = rect.w * CARD_SCALE;
+                    const actualH = rect.h * CARD_SCALE;
+                    const offsetX = (rect.w - actualW) / 2;
+                    const offsetY = (rect.h - actualH) / 2;
+                    const hoverOffset = isHovered ? -3 : 0;
+                    const cx = rect.x + offsetX;
+                    const cy = rect.y + offsetY + hoverOffset;
+
+                    ctx.save();
+                    if (isHovered) {
+                        ctx.shadowColor = 'rgba(0,0,0,0.12)';
+                        ctx.shadowBlur = 18;
+                        ctx.shadowOffsetY = 4;
+                    } else {
+                        ctx.shadowColor = 'rgba(0,0,0,0.04)';
+                        ctx.shadowBlur = 8;
+                        ctx.shadowOffsetY = 2;
+                    }
+
+                    const bgColor = isHovered ? colors.hoverBg : colors.bg;
+                    const borderColor = isHovered ? colors.hoverBorder : colors.border;
+
+                    ctx.beginPath();
+                    roundRect(ctx, cx, cy, actualW, actualH, CORNER_RADIUS * CARD_SCALE);
+                    ctx.fillStyle = bgColor;
+                    ctx.fill();
+                    ctx.shadowColor = 'transparent';
+                    ctx.shadowBlur = 0;
+                    ctx.shadowOffsetY = 0;
+                    ctx.strokeStyle = borderColor;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                    ctx.restore();
+
+                    const fontSizeNum = Math.max(11, 12 * CARD_SCALE);
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.font = `bold ${fontSizeNum}px "Inter", "PingFang SC", "Microsoft YaHei", sans-serif`;
+                    ctx.textAlign = 'left';
+                    ctx.fillText(card.id.toString(), cx + 12, cy + 20);
+
+                    const badgeText = card.category;
+                    const fontSizeBadge = Math.max(9, 10 * CARD_SCALE);
+                    ctx.font = `bold ${fontSizeBadge}px "Inter", "PingFang SC", "Microsoft YaHei", sans-serif`;
+                    const badgeMetrics = ctx.measureText(badgeText);
+                    const badgeW = badgeMetrics.width + 14;
+                    const badgeH = 18;
+                    const badgeX = cx + actualW - badgeW - 10;
+                    const badgeY = cy + 8;
+
+                    ctx.beginPath();
+                    roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 9);
+                    ctx.fillStyle = colors.badgeBg;
+                    ctx.fill();
+                    ctx.fillStyle = colors.badgeText;
+                    ctx.textAlign = 'center';
+                    ctx.fillText(badgeText, badgeX + badgeW / 2, badgeY + 13);
+
+                    const fontSizeIcon = Math.max(22, 24 * CARD_SCALE);
+                    ctx.font = `${fontSizeIcon}px "Inter", "PingFang SC", "Microsoft YaHei", sans-serif`;
+                    ctx.textAlign = 'left';
+                    ctx.fillText(card.icon, cx + 12, cy + 48);
+
+                    ctx.fillStyle = '#0f172a';
+                    const fontSizeTitle = Math.max(13, 15 * CARD_SCALE);
+                    ctx.font = `bold ${fontSizeTitle}px "Inter", "PingFang SC", "Microsoft YaHei", sans-serif`;
+                    ctx.fillText(card.title, cx + 12, cy + 70);
+
+                    ctx.fillStyle = '#475569';
+                    const fontSizeDesc = Math.max(10, 12 * CARD_SCALE);
+                    ctx.font = `${fontSizeDesc}px "Inter", "PingFang SC", "Microsoft YaHei", sans-serif`;
+                    const maxDescWidth = actualW - 24;
+                    const descLines = wrapText(ctx, card.desc, maxDescWidth);
+                    descLines.forEach((line, i) => {
+                        ctx.fillText(line, cx + 12, cy + 88 + i * 15);
+                    });
+                });
+
+                drawNotchOutline(layout);
+            }
+
+            function drawNotchOutline(layout) {
+                const rects = [];
+                for (let i = 0; i < 5; i++) {
+                    rects.push(getCellRect(i, layout));
+                }
+
+                const left = Math.min(...rects.map(r => r.x)) - OUTLINE_PADDING;
+                const top = Math.min(...rects.map(r => r.y)) - OUTLINE_PADDING;
+                const row1Cards = rects.slice(0, 3);
+                const row2Cards = rects.slice(3, 5);
+                const rightFull = Math.max(...row1Cards.map(r => r.x + r.w)) + OUTLINE_PADDING;
+                const rightPartial = Math.max(...row2Cards.map(r => r.x + r.w)) + OUTLINE_PADDING;
+                const row1Bottom = Math.max(...row1Cards.map(r => r.y + r.h)) + OUTLINE_PADDING;
+                const bottom = Math.max(...row2Cards.map(r => r.y + r.h)) + OUTLINE_PADDING;
+
+                const clampX = Math.min(rightFull, layout.w - layout.padding);
+                const clampX2 = Math.min(rightPartial, layout.w - layout.padding);
+                const clampBottom = Math.min(bottom, layout.h - layout.padding);
+
+                const r = OUTLINE_RADIUS;
+                const ir = INNER_RADIUS;
+
+                ctx.beginPath();
+                ctx.moveTo(left + r, top);
+                ctx.arcTo(clampX, top, clampX, top + r, r);
+                ctx.lineTo(clampX, row1Bottom - ir);
+                ctx.arcTo(clampX, row1Bottom, clampX - ir, row1Bottom, ir);
+                ctx.lineTo(clampX2 + ir, row1Bottom);
+                ctx.arcTo(clampX2, row1Bottom, clampX2, row1Bottom + ir, ir);
+                ctx.lineTo(clampX2, clampBottom - r);
+                ctx.arcTo(clampX2, clampBottom, clampX2 - r, clampBottom, r);
+                ctx.arcTo(left, clampBottom, left, clampBottom - r, r);
+                ctx.arcTo(left, top, left + r, top, r);
+                ctx.closePath();
+
+                ctx.fillStyle = 'rgba(245, 158, 11, 0.04)';
+                ctx.fill();
+                ctx.setLineDash([5, 3.5]);
+                ctx.lineWidth = 0.8;
+                ctx.strokeStyle = '#f59e0b';
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+                ctx.stroke();
+                ctx.setLineDash([]);
+            }
+
+            function roundRect(ctx, x, y, w, h, r) {
+                ctx.moveTo(x + r, y);
+                ctx.lineTo(x + w - r, y);
+                ctx.arcTo(x + w, y, x + w, y + r, r);
+                ctx.lineTo(x + w, y + h - r);
+                ctx.arcTo(x + w, y + h, x + w - r, y + h, r);
+                ctx.lineTo(x + r, y + h);
+                ctx.arcTo(x, y + h, x, y + h - r, r);
+                ctx.lineTo(x, y + r);
+                ctx.arcTo(x, y, x + r, y, r);
+                ctx.closePath();
+            }
+
+            function wrapText(ctx, text, maxWidth) {
+                const words = text.split('');
+                const lines = [];
+                let current = '';
+                for (let i = 0; i < words.length; i++) {
+                    const test = current + words[i];
+                    if (ctx.measureText(test).width > maxWidth && current.length > 0) {
+                        lines.push(current);
+                        current = words[i];
+                    } else {
+                        current = test;
+                    }
+                }
+                if (current) lines.push(current);
+                return lines.slice(0, 2);
+            }
+
+            function getHoverIndex(e) {
+                if (!gridLayout) return -1;
+                const canvasRect = canvas.getBoundingClientRect();
+                const mx = e.clientX - canvasRect.left;
+                const my = e.clientY - canvasRect.top;
+                for (let i = 0; i < 9; i++) {
+                    const rect = getCellRect(i, gridLayout);
+                    const actualW = rect.w * CARD_SCALE;
+                    const actualH = rect.h * CARD_SCALE;
+                    const ox = (rect.w - actualW) / 2;
+                    const oy = (rect.h - actualH) / 2;
+                    if (mx >= rect.x + ox && mx <= rect.x + ox + actualW &&
+                        my >= rect.y + oy && my <= rect.y + oy + actualH) {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+
+            canvas.addEventListener('mousemove', (e) => {
+                const newIndex = getHoverIndex(e);
+                if (newIndex !== hoveredIndex) {
+                    hoveredIndex = newIndex;
+                    canvas.style.cursor = hoveredIndex >= 0 ? 'pointer' : 'default';
+                    render();
+                }
+            });
+
+            canvas.addEventListener('mouseleave', () => {
+                if (hoveredIndex !== -1) {
+                    hoveredIndex = -1;
+                    canvas.style.cursor = 'default';
+                    render();
+                }
+            });
+
+            let resizeTimeout;
+            function onResize() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    gridLayout = null;
+                    render();
+                }, 150);
+            }
+            window.addEventListener('resize', onResize);
+
+            function init() {
+                render();
+            }
+            if (document.readyState === 'complete') {
+                init();
+            } else {
+                window.addEventListener('load', init);
+            }
+
+            if (window.ResizeObserver) {
+                const observer = new ResizeObserver(() => {
+                    gridLayout = null;
+                    render();
+                });
+                observer.observe(wrapper);
+            }
+        })();
+    </script>
+</body>
+</html>
